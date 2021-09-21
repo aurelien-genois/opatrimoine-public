@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "OPatrimoine\\" : "./class"
+        }
+    },
+    "config": {
+        "vendor-dir": "vendor-opatrimoine"
+    },
+    "require": {
+        "altorouter/altorouter": "^2.0",
+        "symfony/var-dumper": "^5.3"
+    }
+}
