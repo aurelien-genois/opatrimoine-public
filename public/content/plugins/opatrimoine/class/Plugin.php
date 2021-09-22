@@ -17,8 +17,8 @@ class Plugin
     ];
 
     public $customTaxonomies = [
-        'establishment-type' => [
-            'label' => 'Type d\'établissement',
+        'place-type' => [
+            'label' => 'Type de lieux',
             'postTypes' => ['place'],
             'hierachical' => false,
         ],
@@ -28,9 +28,10 @@ class Plugin
             'hierachical' => false,
         ],
         'visit-thematic' => [
-            'label' => 'Thématique visite',
+            'label' => 'Thématique de visite',
             'postTypes' => ['guided-tour'],
-            'hierachical' => true,
+            // True si évolution potentielle
+            'hierachical' => false,
         ],
     ];
 
