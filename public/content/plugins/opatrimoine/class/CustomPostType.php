@@ -2,7 +2,7 @@
 
 namespace OPatrimoine;
 
-class customPostType
+class CustomPostType
 {
     public $supports = [
         'title',

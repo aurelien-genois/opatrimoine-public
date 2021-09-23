@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * Plugin Name: O'Patrimoine
  * Author: Promo Ulysse WP
