@@ -6,16 +6,29 @@ use OPatrimoine\defaultDatas\PlacesDatas;
 use OPatrimoine\defaultDatas\PlaceTypesDatas;
 
 class Plugin
-{
+{    
     // cpt definitions
     public $customPostTypes = [
         'place' => [
             'label' => 'Lieux',
             'icon' => 'dashicons-bank',
+            'fields' => [
+                ['key' => 'telephone', 'label' => 'Téléphone', 'name' => 'telephone', 'type' => 'text'],
+                ['key' => 'urlsite', 'label' => 'URL du site', 'name' => 'urlsite', 'type' => 'url'],
+                ['key' => 'address', 'label' => 'Adresse', 'name' => 'address', 'type' => 'text'],
+                ['key' => 'city', 'label' => 'Ville', 'name' => 'city', 'type' => 'text'],
+                // NTH noter un lieu
+                //['key' => 'rating', 'label' => 'Note', 'name' => 'rating', 'type' => 'number'],
+            ],
         ],
         'guided-tour' => [
             'label' => 'Visites guidées',
             'icon' => 'dashicons-calendar-alt',
+            'fields' => [
+                ['key' => 'starthour', 'label' => 'Heure de début', 'name' => 'starthour', 'type' => 'time_picker'],
+                ['key' => 'duration', 'label' => 'Duréé estimée', 'name' => 'duration', 'type' => 'time_picker'],
+                ['key' => 'totalpersons', 'label' => 'Nombre de personnes totale', 'name' => 'totalpersons', 'type' => 'number'],
+            ],
         ],
     ];
 
@@ -61,6 +74,7 @@ class Plugin
                 $identifier,
                 $description['label'],
                 $description['icon'],
+                $description['fields'],
             );
             $postType->register();
         };
@@ -95,10 +109,15 @@ class Plugin
         $places = $placesDatas->getPlaces();
 
         foreach($places as $place) {
-            wp_insert_post($place);
+            $postId = wp_insert_post($place);
+            // ACF populate custom fields
+            if(function_exists('update_field')) {
+                update_field('telephone', $place['acf-telephone'], $postId);
+                update_field('urlsite', $place['acf-urlsite'], $postId);
+                update_field('address', $place['acf-address'], $postId);
+                update_field('city', $place['acf-city'], $postId);
+            };
         }
-
-
     }
 
     public function activate()

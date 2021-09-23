@@ -5,10 +5,6 @@ namespace OPatrimoine\defaultDatas;
 class PlacesDatas
 {
     // TODO add image url
-    // TODO add acf adresse
-    // TODO add acf tel
-    // TODO add acf lien du site
-    // TODO add acf ville
     // NTH add acf notes
     
     public $places = [
@@ -22,6 +18,12 @@ class PlacesDatas
             'tax_input' => ['place-type' => ['Musée']],
             // NTH 'open' en évolution potentielle
             'comment_status' => 'closed',
+            // ACF custom fields
+            'acf-telephone' => '01 23 34 54 23',
+            'acf-urlsite' => 'https://www.musee-orsay.fr/',
+            'acf-address' => '62, rue de Lille
+            75007 Paris ',
+            'acf-city' => 'Paris',
         ],
         [
             'post_title' => 'Un monument',
@@ -33,6 +35,12 @@ class PlacesDatas
             'tax_input' => ['place-type' => ['Monument']],
             // NTH 'open' en évolution potentielle
             'comment_status' => 'closed',
+            // ACF custom fields
+            'acf-telephone' => '01 23 34 54 23',
+            'acf-urlsite' => 'https://www.musee-orsay.fr/',
+            'acf-address' => '62, rue de Lille
+            75007 Paris ',
+            'acf-city' => 'Paris',
         ],
         [
             'post_title' => 'Une place',
@@ -44,6 +52,12 @@ class PlacesDatas
             'tax_input' => ['place-type' => ['Place']],
             // NTH 'open' en évolution potentielle
             'comment_status' => 'closed',
+            // ACF custom fields
+            'acf-telephone' => '01 23 34 54 23',
+            'acf-urlsite' => 'https://www.musee-orsay.fr/',
+            'acf-address' => '62, rue de Lille
+            75007 Paris ',
+            'acf-city' => 'Paris',
         ],
     ];
 
