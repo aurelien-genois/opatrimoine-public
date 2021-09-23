@@ -17,25 +17,34 @@
     
 
     <?php wp_head();?>
+
+    
 </head>
 
 <body>
 
 <header>
-    <nav id="header">
-       
-         <a href="#" class="logo"> <img class="opatrimoine-logo" src="/spe-wp/opatrimoine/public/content/themes/opatrimoine/assets/image/opatrimoinelogo.png" alt="O'Patrimoine logo">
+  
+        <a href="#" class="logo"> <img class="opatrimoine-logo" src="/spe-wp/opatrimoine/public/content/themes/opatrimoine/assets/image/opatrimoinelogo.png" alt="O'Patrimoine logo">
              <h4>O'Patrimoine</h4> 
-         </a>
+        </a>
      
-        <div class="links">
-          <ul>
-            <li><a href="#">Liste des lieux</a></li>
-            <li><a href="#">Infos pratiques</a></li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">S'incrire</a></li>
-          </ul>
-        </div>
+            <div class="menu">
+                <?php
+                // nous allons afficher le menu "nav". Ce menu a été défini dans le backoffice de wp Apparence -> Personnaliser -> Menu
+                // IMPORTANT WP afficher un menu wordpress
+                // DOC https://developer.wordpress.org/reference/functions/wp_nav_menu/
+                    wp_nav_menu([
+                        'theme_location' => 'header_menu', // première clé : quel menu nous souhaitons afficher
+                        'container' => 'nav',    // la balise HTML qui sera utilisée pour encapsuler le menu
+                    
+                        'echo' => true,    // permet d'afficher le menu
+                    ]);
+
+                    
+                ?>
+            </div>
+
         <button id="connection">Connexion</button>
-    </nav>
+    
 </header>
