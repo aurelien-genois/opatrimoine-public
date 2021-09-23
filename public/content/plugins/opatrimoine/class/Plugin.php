@@ -2,6 +2,9 @@
 
 namespace OPatrimoine;
 
+use OPatrimoine\defaultDatas\PlacesDatas;
+use OPatrimoine\defaultDatas\PlaceTypesDatas;
+
 class Plugin
 {
     // cpt definitions
@@ -16,6 +19,7 @@ class Plugin
         ],
     ];
 
+    // custom taxonomies definitions
     public $customTaxonomies = [
         'place-type' => [
             'label' => 'Type de lieux',
@@ -30,7 +34,7 @@ class Plugin
         'visit-thematic' => [
             'label' => 'Thématique de visite',
             'postTypes' => ['guided-tour'],
-            // True si évolution potentielle
+            // NTH True en évolution potentielle
             'hierachical' => false,
         ],
     ];
@@ -75,9 +79,34 @@ class Plugin
         }
     }
 
+    public function generatePlaceTypes()
+    {
+        $placeTypesDatas = new PlaceTypesDatas();
+        $placeTypes = $placeTypesDatas->getPlaceTypes();
+
+        foreach($placeTypes as $placeType) {
+            wp_insert_term($placeType, 'place-type');
+        }
+    }
+
+    public function generatePlaces()
+    {
+        $placesDatas = new PlacesDatas();
+        $places = $placesDatas->getPlaces();
+
+        foreach($places as $place) {
+            wp_insert_post($place);
+        }
+
+
+    }
+
     public function activate()
     {
-
+        $this->registerCustomPostTypes();
+        $this->registerCustomTaxonomies();
+        $this->generatePlaceTypes();
+        $this->generatePlaces();
     }
 
     public function deactivate()
