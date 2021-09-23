@@ -2,8 +2,10 @@
 
 namespace OPatrimoine;
 
+use OPatrimoine\defaultDatas\GuidedToursDatas;
 use OPatrimoine\defaultDatas\PlacesDatas;
 use OPatrimoine\defaultDatas\PlaceTypesDatas;
+use OPatrimoine\defaultDatas\TourThematicsDatas;
 
 class Plugin
 {    
@@ -26,7 +28,7 @@ class Plugin
             'icon' => 'dashicons-calendar-alt',
             'fields' => [
                 ['key' => 'starthour', 'label' => 'Heure de début', 'name' => 'starthour', 'type' => 'time_picker'],
-                ['key' => 'duration', 'label' => 'Duréé estimée', 'name' => 'duration', 'type' => 'time_picker'],
+                ['key' => 'duration', 'label' => 'Duréé estimée', 'name' => 'duration', 'type' => 'text'],
                 ['key' => 'totalpersons', 'label' => 'Nombre de personnes totale', 'name' => 'totalpersons', 'type' => 'number'],
             ],
         ],
@@ -44,7 +46,7 @@ class Plugin
             'postTypes' => ['guided-tour'],
             'hierachical' => false,
         ],
-        'visit-thematic' => [
+        'tour-thematic' => [
             'label' => 'Thématique de visite',
             'postTypes' => ['guided-tour'],
             // NTH True en évolution potentielle
@@ -103,6 +105,16 @@ class Plugin
         }
     }
 
+    public function generateTourThematics()
+    {
+        $tourThematicsDatas = new TourThematicsDatas();
+        $tourThematics = $tourThematicsDatas->getTourThematics();
+
+        foreach($tourThematics as $tourThematic) {
+            wp_insert_term($tourThematic, 'tour-thematic');
+        }
+    }
+
     public function generatePlaces()
     {
         $placesDatas = new PlacesDatas();
@@ -120,12 +132,30 @@ class Plugin
         }
     }
 
+    public function generateGuidedTours()
+    {
+        $guidedToursDatas = new GuidedToursDatas();
+        $guidedTours = $guidedToursDatas->getGuidedTours();
+
+        foreach($guidedTours as $guidedTour) {
+            $postId = wp_insert_post($guidedTour);
+            // ACF populate custom fields
+            if(function_exists('update_field')) {
+                update_field('starthour', $guidedTour['acf-starthour'], $postId);
+                update_field('duration', $guidedTour['acf-duration'], $postId);
+                update_field('totalpersons', $guidedTour['acf-totalpersons'], $postId);
+            };
+        }
+    }
+
     public function activate()
     {
         $this->registerCustomPostTypes();
         $this->registerCustomTaxonomies();
         $this->generatePlaceTypes();
         $this->generatePlaces();
+        $this->generateTourThematics();
+        $this->generateGuidedTours();
     }
 
     public function deactivate()
