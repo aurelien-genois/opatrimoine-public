@@ -1,0 +1,107 @@
+header {
+    display:flex;
+    justify-content: space-around;
+
+
+}
+
+h4 {
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    color: black;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.opatrimoine-logo {
+    width: 58px;
+    height: 58px;
+    margin-right: 0.5em;
+}
+
+.logo {
+    display: flex;
+    text-decoration: none;
+    
+    
+}
+
+#connection {
+    width: 90px;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+    background-color: #caa12f;
+    color: white;
+}
+
+.menu {
+    margin-top: auto;
+    margin-bottom: auto;
+ 
+}
+
+
+
+.links:hover {
+    color: #949494,
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    
+     
+    
+}
+
+li a {
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 3em;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: black;
+    text-decoration: none !important;
+    
+}
+
+
+
+.section-footer {
+    display: flex !important;
+    justify-content: center !important; 
+    flex-wrap: wrap !important;
+    font-family: 'Open Sans', sans-serif;
+    font-size: small;
+
+}
+
+
+
+
+
+.social-media  {
+
+    font-size: 20px;
+    margin-right: 1.5em;
+
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-content: flex-start !important;
+
+}
+
+#menu-footer-menu {
+    display: flex;
+    align-content: flex-end !important;
+}
+
+
+
