@@ -26,3 +26,4 @@ module.exports = {
     hot: false,
   },
   // productionSourceMap: false
+}
