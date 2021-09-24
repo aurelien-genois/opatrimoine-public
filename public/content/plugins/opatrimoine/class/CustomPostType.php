@@ -60,12 +60,25 @@ class CustomPostType
                 $data['type'] = 'text';
             }
 
-            $fieldsDescriptors[] = $this->getFieldDescriptor(
-                $data['key'],
-                $data['label'],
-                $data['name'],
-                $data['type'],
-            );
+            if($data['type'] == 'post_object') {
+                $fieldsDescriptors[] = $this->getFieldDescriptor(
+                    $data['key'],
+                    $data['label'],
+                    $data['name'],
+                    $data['type'],
+                    $data['allow_null'],
+                    $data['multiple'],
+                    $data['return_format'],
+                    $data['post_type'],
+                );
+            } else {
+                $fieldsDescriptors[] = $this->getFieldDescriptor(
+                    $data['key'],
+                    $data['label'],
+                    $data['name'],
+                    $data['type'],
+                );
+            }
         }
 
 
@@ -96,7 +109,7 @@ class CustomPostType
         }
     }
 
-    protected function getFieldDescriptor($fieldKey, $fieldLabel, $fieldName, $fieldType = 'text')
+    protected function getFieldDescriptor($fieldKey, $fieldLabel, $fieldName, $fieldType = 'text', $fieldAllowNull = 'no', $fieldMultiple = 'no', $fieldReturnFormat = '', $fieldPostType = '')
     {
         return [
             'key' => $fieldKey,
@@ -119,6 +132,11 @@ class CustomPostType
             'maxlength' => '',
             'readonly' => 0,
             'disabled' => 0,
+            // Additionnal key for post_object field
+            'allow_null' => $fieldAllowNull, 
+            'multiple' => $fieldMultiple, 
+            'return_format' => $fieldReturnFormat, 
+            'post_type' => $fieldPostType,
         ];
     }
 }

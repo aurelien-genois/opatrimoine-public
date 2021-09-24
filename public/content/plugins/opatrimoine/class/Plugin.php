@@ -31,9 +31,14 @@ class Plugin
                 ['key' => 'starthour', 'label' => 'Heure de début', 'name' => 'starthour', 'type' => 'time_picker'],
                 ['key' => 'duration', 'label' => 'Duréé estimée', 'name' => 'duration', 'type' => 'text'],
                 ['key' => 'totalpersons', 'label' => 'Nombre de personnes totale', 'name' => 'totalpersons', 'type' => 'number'],
+                // Relationship field to links a guided-tour to a specific place
+                ['key' => 'placeoftour', 'label' => 'Lieux de la visite', 'name' => 'placeoftour', 'type' => 'post_object', 'allow_null' => 'no', 'multiple' => 0, 'return_format' => 'object', 'post_type' => 'place'],
             ],
         ],
     ];
+
+    // List of place post id for link them to guided-tours
+    public $placesIdList = [];
 
     // custom taxonomies definitions
     public $customTaxonomies = [
@@ -123,6 +128,7 @@ class Plugin
 
         foreach($places as $place) {
             $postId = wp_insert_post($place);
+
             // ACF populate custom fields
             if(function_exists('update_field')) {
                 update_field('telephone', $place['acf-telephone'], $postId);
@@ -130,6 +136,9 @@ class Plugin
                 update_field('address', $place['acf-address'], $postId);
                 update_field('city', $place['acf-city'], $postId);
             };
+
+            // save places postId for link them to guided-tours
+            $this->placesIdList[] = $postId;
 
             // Image
             if ($place['place-photo']) {
@@ -140,7 +149,7 @@ class Plugin
 
     public function generateGuidedTours()
     {
-        $guidedToursDatas = new GuidedToursDatas();
+        $guidedToursDatas = new GuidedToursDatas($this->placesIdList);
         $guidedTours = $guidedToursDatas->getGuidedTours();
 
         foreach($guidedTours as $guidedTour) {
@@ -150,6 +159,7 @@ class Plugin
                 update_field('starthour', $guidedTour['acf-starthour'], $postId);
                 update_field('duration', $guidedTour['acf-duration'], $postId);
                 update_field('totalpersons', $guidedTour['acf-totalpersons'], $postId);
+                update_field('placeoftour', $guidedTour['acf-placeoftour'], $postId);
             };
         }
     }
