@@ -6,6 +6,7 @@ use OPatrimoine\defaultDatas\GuidedToursDatas;
 use OPatrimoine\defaultDatas\PlacesDatas;
 use OPatrimoine\defaultDatas\PlaceTypesDatas;
 use OPatrimoine\defaultDatas\TourThematicsDatas;
+use WP_Http;
 
 class Plugin
 {    
@@ -129,6 +130,11 @@ class Plugin
                 update_field('address', $place['acf-address'], $postId);
                 update_field('city', $place['acf-city'], $postId);
             };
+
+            // Image
+            if ($place['place-photo']) {
+                $this->setPostImageThumbnail($postId, $place['place-photo']);
+            };
         }
     }
 
@@ -146,6 +152,61 @@ class Plugin
                 update_field('totalpersons', $guidedTour['acf-totalpersons'], $postId);
             };
         }
+    }
+
+    public function setPostImageThumbnail($postId, $imageUrl)
+    {
+        include_once(ABSPATH . WPINC . '/class-http.php');
+        $http = new WP_Http();
+
+        // WP_Http->->request() Send an HTTP request to a URI.
+        $response = $http->request($imageUrl);
+        if ($response['response']['code'] != 200) {
+            dd('response' . $response['response']['code']);
+        }
+
+        // wp_upload_bits() Create a file in the upload folder with given content.
+        $upload = wp_upload_bits(basename($imageUrl), null, $response['body']);
+        if (!empty($upload['error'])) {
+            return false;
+        }
+    
+        // basename() Returns trailing name component of path
+        $file_path = $upload['file'];
+        $file_name = basename($file_path);
+        $wp_filetype = wp_check_filetype($file_name, null);
+
+        // sanitize_file_name() Sanitizes a filename, replacing whitespace with dashes.
+        // pathinfo() Returns information about a file path
+        $attachment_title = sanitize_file_name(pathinfo($file_name, PATHINFO_FILENAME));
+        // wp_upload_dir() Returns an array containing the current upload directory's path and URL.
+        $wp_upload_dir = wp_upload_dir();
+
+        // guid means Globally Unique Identifier
+        $attachment = array(
+            'guid' => $wp_upload_dir['url'] . '/' . $file_name,
+            'post_mime_type' => $wp_filetype['type'],
+            'post_title' => $attachment_title,
+            'post_content' => '',
+            'post_status' => 'inherit'
+        );
+
+        // Create the attachment
+        $attach_id = wp_insert_attachment($attachment, $file_path, $postId);
+
+        // you must first include the image.php file for the function wp_generate_attachment_metadata() to work
+        require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+
+        // Definer attachment metadata
+        $attach_data = wp_generate_attachment_metadata($attach_id, $file_path);
+
+        // Assign metadata to attachment
+        wp_update_attachment_metadata($attach_id, $attach_data);
+
+        // Set the attachment as the thumbnail of the post
+        set_post_thumbnail( $postId, $attach_id );
+
+        return $attach_id;
     }
 
     public function activate()
