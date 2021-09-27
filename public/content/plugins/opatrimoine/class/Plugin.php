@@ -49,11 +49,12 @@ class Plugin
             'postTypes' => ['place'],
             'hierachical' => false,
         ],
-        'inaccessibility' => [
-            'label' => 'Inaccessibilité',
-            'postTypes' => ['guided-tour'],
-            'hierachical' => false,
-        ],
+        // NTH add inaccessibility taxonomies
+        // 'inaccessibility' => [
+        //     'label' => 'Inaccessibilité',
+        //     'postTypes' => ['guided-tour'],
+        //     'hierachical' => false,
+        // ],
         'tour-thematic' => [
             'label' => 'Thématique de visite',
             'postTypes' => ['guided-tour'],
