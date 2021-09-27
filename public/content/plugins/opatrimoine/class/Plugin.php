@@ -23,6 +23,7 @@ class Plugin
                 // NTH noter un lieu
                 //['key' => 'rating', 'label' => 'Note', 'name' => 'rating', 'type' => 'number'],
             ],
+            'hasArchive' => true,
         ],
         'guided-tour' => [
             'label' => 'Visites guidées',
@@ -34,6 +35,7 @@ class Plugin
                 // Relationship field to links a guided-tour to a specific place
                 ['key' => 'placeoftour', 'label' => 'Lieux de la visite', 'name' => 'placeoftour', 'type' => 'post_object', 'allow_null' => 'no', 'multiple' => 0, 'return_format' => 'object', 'post_type' => 'place'],
             ],
+            'hasArchive' => false,
         ],
     ];
 
@@ -83,6 +85,7 @@ class Plugin
                 $description['label'],
                 $description['icon'],
                 $description['fields'],
+                $description['hasArchive'],
             );
             $postType->register();
         };
@@ -219,6 +222,34 @@ class Plugin
         return $attach_id;
     }
 
+    public function addPostsArchiveNavMenuItem($menu, $itemTitle, $post_type)
+    {
+        // get the menu object
+        $menuObj = wp_get_nav_menu_object($menu);
+        // get the archive page link
+        $archiveLink = get_post_type_archive_link($post_type);
+        // add the link item to the menu
+        wp_update_nav_menu_item( $menuObj->term_id, 0, array(
+            'menu-item-title'   =>  $itemTitle,
+            'menu-item-url'     => $archiveLink, 
+            'menu-item-status'  => 'publish'
+        ) );
+    }
+
+    public function deletePostsArchiveNavMenuItem($menu, $itemTitle)
+    {
+        // get the items of the menu 'header_menu'
+        $headerMenuItems = wp_get_nav_menu_items($menu);
+        // get the postID of the menu item
+        foreach($headerMenuItems as $item) {
+            if ($item->post_title == $itemTitle) {
+                $archiveLinkItemPostID = $item->ID;
+            }
+        }
+        // delete the post of the menu item
+        wp_delete_post($archiveLinkItemPostID);
+    }
+
     public function activate()
     {
         $this->registerCustomPostTypes();
@@ -227,10 +258,13 @@ class Plugin
         $this->generatePlaces();
         $this->generateTourThematics();
         $this->generateGuidedTours();
+
+        $this->addPostsArchiveNavMenuItem('header_menu', 'Liste des lieux', 'place');
+    
     }
 
     public function deactivate()
     {
-        
+        $this->deletePostsArchiveNavMenuItem('header_menu', 'Liste des lieux');
     }
 }
