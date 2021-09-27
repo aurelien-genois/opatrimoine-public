@@ -12,7 +12,7 @@
 
         <?php
         wp_nav_menu([
-            'theme' => 'footer_menu', 
+            'menu' => 'footer_menu', 
             'container' => 'nav',
             'echo' => true,
             ]);

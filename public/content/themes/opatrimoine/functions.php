@@ -18,12 +18,12 @@ $footerMenu_id = wp_create_nav_menu('footer_menu');
  
 // NTH Set up default menu items linked to pages
 // wp_update_nav_menu_item( $headerMenu_id, 0, array(
-//     'menu-item-title'   =>  __( 'Présentation', 'Page de présentation' ),
+//     'menu-item-title'   =>  'Présentation',
 //     'menu-item-url'     => home_url( '/presentation' ), 
 //     'menu-item-status'  => 'publish'
 // ) );
 // wp_update_nav_menu_item( $headerMenu_id, 0, array(
-//     'menu-item-title'   =>  __( 'Infos pratiques', 'Page d\'infos pratiques' ),
+//     'menu-item-title'   =>  'Infos pratiques',
 //     'menu-item-url'     => home_url( '/infos-pratiques' ), 
 //     'menu-item-status'  => 'publish'
 // ) );
