@@ -11,16 +11,24 @@ function opatrimoine_initialize_theme() {
     add_theme_support('menus');
 };
 
-if ( ! function_exists( 'mytheme_register_nav_menu' ) ) {
 
-    function mytheme_register_nav_menu(){
-        register_nav_menus( array(
-            'header_menu' => __( 'Header Menu', 'text_domain' ),
-            'footer_menu'  => __( 'Footer Menu', 'text_domain' ),
-        ) );
-    }
-    add_action( 'after_setup_theme', 'mytheme_register_nav_menu', 0 );
-}
+// create a menu
+$headerMenu_id = wp_create_nav_menu('header_menu');
+$footerMenu_id = wp_create_nav_menu('footer_menu');
+ 
+// NTH Set up default menu items linked to pages
+// wp_update_nav_menu_item( $headerMenu_id, 0, array(
+//     'menu-item-title'   =>  __( 'Présentation', 'Page de présentation' ),
+//     'menu-item-url'     => home_url( '/presentation' ), 
+//     'menu-item-status'  => 'publish'
+// ) );
+// wp_update_nav_menu_item( $headerMenu_id, 0, array(
+//     'menu-item-title'   =>  __( 'Infos pratiques', 'Page d\'infos pratiques' ),
+//     'menu-item-url'     => home_url( '/infos-pratiques' ), 
+//     'menu-item-status'  => 'publish'
+// ) );
+
+
 
 add_action(
     'wp_enqueue_scripts',
