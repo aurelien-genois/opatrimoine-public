@@ -22,13 +22,25 @@ if ( ! function_exists( 'mytheme_register_nav_menu' ) ) {
     add_action( 'after_setup_theme', 'mytheme_register_nav_menu', 0 );
 }
 
+
+// =========================================================
+// IMPORTANT WP wp_enqueue_scripts, ajouter des fichiers css/js à charger dans le thème
 add_action(
     'wp_enqueue_scripts',
     function() {
+        // IMPORTANT WP chargement d'un fichier css
+        // DOC WP wp_enqueue_style https://developer.wordpress.org/reference/functions/wp_enqueue_style/
         wp_enqueue_style(
-            'global-style',
-            get_theme_file_uri('assets/css/style.css'),
+            'global-style', // identifiant du fichier css
+            // get_theme_file_uri calcul automatiquement l'url du fichier demandé
+            get_theme_file_uri('assets/css/style.css'), // url du fichier css
         );
+
+        wp_enqueue_style(
+            'google-font',
+            'https://fonts.googleapis.com/css2?family=Antic+Didone&family=Be+Vietnam+Pro:wght@200;400;500;600;700&display=swap'
+        );
+        
         wp_enqueue_script(
             'sample_script',
             get_theme_file_uri('assets/css/script.js'),
@@ -36,5 +48,33 @@ add_action(
             '1.0.0',
             true,
         );
+        
+        // ===========================================================
+        // WARNING SUPER SALE
+
+        // si nous en développement (localhost)
+        if($_SERVER['HTTP_HOST'] == 'localhost') {
+            wp_enqueue_script(
+                'vue-js',
+                get_theme_file_uri('components/dist/js/app.js'),
+                [],
+                '1.0.0',
+                true
+            );
+        }
+        //sinon nous chargeons le vrai fichier "final"
+        else {
+            wp_enqueue_script(
+                'vue-js',
+                get_theme_file_uri('assets/components/js/app.js'),
+                [],
+                '1.0.0',
+                true
+            );
+        }
+
     },
 );
+
+
+

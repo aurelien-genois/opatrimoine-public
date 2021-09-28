@@ -7,12 +7,17 @@ header {
 
 h4 {
 
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Antic Didone', serif;
     font-size: 1.1em;
     color: black;
     font-weight: bold;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+p {
+
+    font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 
@@ -30,7 +35,8 @@ h4 {
 }
 
 #connection {
-    width: 90px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    width: 110px;
     height: 30px;
     margin-top: auto;
     margin-bottom: auto;
@@ -63,7 +69,7 @@ ul {
 }
 
 li a {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Be Vietnam Pro', sans-serif;
     margin-right: 3em;
     margin-top: auto;
     margin-bottom: auto;
@@ -72,13 +78,17 @@ li a {
     
 }
 
+h2 {
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
 
 
 .section-footer {
     display: flex !important;
     justify-content: center !important; 
     flex-wrap: wrap !important;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Be Vietnam Pro', sans-serif;
     font-size: small;
 
 }
