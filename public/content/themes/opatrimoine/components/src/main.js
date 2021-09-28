@@ -1,12 +1,45 @@
 import Vue from 'vue'
-import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
-Vue.config.productionTip = false
+import Carousel from './Carousel.vue'
 
-new Vue({
-  router,
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+
+
+
+Vue.config.productionTip = false;
+
+const components = {
+  '#carousel': Carousel,
+
+};
+
+
+
+for(let selector in components) {
+  if(document.querySelector(selector)) {
+
+    const component = components[selector];
+    const element = document.querySelector(selector);
+
+    /*
+     nous vérifions sur l'élément qui va accueillir le composant vuejs s'il y a un dataset "vue" (data-vue="......")
+
+     le dataset vue contient du json listant les variables à faire passser au composant vuejs
+    */
+
+    if(element.dataset.vue) {
+      const data = JSON.parse(element.dataset.vue);
+      // nous injection les variables passé dans le template wordpress à tous les composants vuejs
+      Vue.prototype.$wordpressData = data;
+    }
+
+
+    new Vue({
+      router,
+      vuetify,
+      render: h => h(component)
+    }).$mount(selector)
+  }
+}
