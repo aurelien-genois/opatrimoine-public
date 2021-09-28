@@ -41,7 +41,7 @@ class PlacesDatas
             'acf-urlsite' => 'http://www.paris-arc-de-triomphe.fr/Actualites/L-Arc-de-triomphe-Wrapped-Paris-1961-2021',
             'acf-address' => 'Place Charles de Gaulle
             75017 Paris ',
-            'acf-city' => 'Paris',
+            'acf-city' => 'Rouen',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2021/09/18/16/05/arc-de-triomphe-6635521_960_720.jpg',
         ],
@@ -58,7 +58,7 @@ class PlacesDatas
             'acf-telephone' => '-',
             'acf-urlsite' => 'https://fr.wikipedia.org/wiki/Place_de_la_Concorde',
             'acf-address' => 'Place de la Concorde 75008 Paris ',
-            'acf-city' => 'Paris',
+            'acf-city' => 'Cherbourg',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2018/11/06/15/02/fontaine-des-mers-3798480_960_720.jpg',
         ],

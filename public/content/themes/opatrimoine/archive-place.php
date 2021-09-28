@@ -1,22 +1,54 @@
 <?php
 get_header();
 
-$places = new WP_Query([
-    'post_type' => 'place',
-]);
+$placeTypes = getPlaceTypes();
+$cities = getCities();
 
 ?>
 
 <h1>Liste des lieux</h1>
 
+<form>
+    <div>
+        <fieldset>
+            <input type="text" id="place-name" name="place-name" value="<?= $_GET['place-name'] ?? '' ?>">
+
+            <select name="place-type" id="place-type">
+                <option value="">All</option>
+
+                <?php foreach($placeTypes as $placeType) :?>
+                 <option value="<?= $placeType->slug ?>" <?= (isset($_GET['place-type']) && $_GET['place-type'] == $placeType->slug) ? 'selected' : '' ?>>
+                    <?= $placeType->name ?>
+                </option>
+                 <?php endforeach; ?>
+            </select>
+
+            <select name="place-city" id="place-city">
+                <option value="">All</option>
+
+                <?php foreach($cities as $city) :?>
+                 <option value="<?= $city ?>"  <?= (isset($_GET['place-city']) && $_GET['place-city'] == $city) ? 'selected' : '' ?>><?= $city ?></option>
+                 <?php endforeach ?>
+            </select>
+
+        </fieldset>
+        <!-- NTH add input for guided-tours thematics -->
+    </div>
+    <button type="submit">Filtrer</button>
+</form>
+
+<!-- places-list -->
+<section>
 <?php
-if($places->have_posts()) {
-    while ($places->have_posts()) {
-        $places->the_post();
+if(have_posts()) {
+    while (have_posts()) {
+        the_post();
+
         get_template_part('partials/place-thumbnail');
     }
 }
 ?>
+</section>
 
 <?php
 get_footer();

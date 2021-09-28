@@ -46,3 +46,8 @@ add_action(
         );
     },
 );
+
+
+require_once 'functions/places.php';
+add_action('pre_get_posts', 'place_pre_get_posts');
+add_filter( 'posts_where', 'title_filter', 10, 2 );
