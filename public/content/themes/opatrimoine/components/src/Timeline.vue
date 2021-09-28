@@ -1,8 +1,10 @@
 <template>
 
   <v-app>
-    
+
+  <div id="timeline">  
     <h2>Utilisation</h2>
+  </div>
 
   <v-timeline
     align-top
@@ -66,3 +68,15 @@
   }
   
 </script>
+
+<style>
+#timeline {
+
+ 
+  padding-top: 30px;
+
+  font-family: 'Antic Didone', serif;
+
+}
+
+</style>

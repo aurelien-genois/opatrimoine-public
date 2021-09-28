@@ -40,10 +40,15 @@ add_action(
             'google-font',
             'https://fonts.googleapis.com/css2?family=Antic+Didone&family=Be+Vietnam+Pro:wght@200;400;500;600;700&display=swap'
         );
+
+        wp_enqueue_style(
+            'material-design-icon',
+            'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css'
+        );
         
         wp_enqueue_script(
             'sample_script',
-            get_theme_file_uri('assets/css/script.js'),
+            get_theme_file_uri('assets/js/script.js'),
             [],
             '1.0.0',
             true,
@@ -61,6 +66,13 @@ add_action(
                 '1.0.0',
                 true
             );
+
+
+            wp_enqueue_style(
+                'vue-js-style',
+                get_theme_file_uri('components/dist/css/app.css'),
+            );
+
         }
         //sinon nous chargeons le vrai fichier "final"
         else {
@@ -70,6 +82,10 @@ add_action(
                 [],
                 '1.0.0',
                 true
+            );
+            wp_enqueue_style(
+                'vue-js-style',
+                get_theme_file_uri('assets/components/css/app.css'),
             );
         }
 

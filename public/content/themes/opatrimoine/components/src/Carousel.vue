@@ -1,7 +1,7 @@
 <template>
   <v-app>
 
-  <v-carousel :show-arrows="false">
+  <v-carousel :show-arrows="false" id="carousel">
     <v-carousel-item
       v-for="(item,i) in items"
       :key="i"
@@ -36,3 +36,20 @@
   }
   
 </script>
+
+<style>
+.v-application--wrap {
+  /* surcharge du style par défault créé par vuetify ; nous ne voulons pas que le composant prenne toute la hauteur */
+  min-height: auto !important;
+}
+
+#carousel {
+
+ 
+  padding-top: 30px;
+
+
+
+}
+
+</style>
