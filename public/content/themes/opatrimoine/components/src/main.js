@@ -4,6 +4,7 @@ import vuetify from './plugins/vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
 import Carousel from './Carousel.vue'
+import Timeline from './Timeline.vue'
 
 
 
@@ -12,6 +13,7 @@ Vue.config.productionTip = false;
 
 const components = {
   '#carousel': Carousel,
+  '#timeline': Timeline,
 
 };
 
@@ -22,6 +24,10 @@ for(let selector in components) {
 
     const component = components[selector];
     const element = document.querySelector(selector);
+
+  
+
+    
 
     /*
      nous vérifions sur l'élément qui va accueillir le composant vuejs s'il y a un dataset "vue" (data-vue="......")
