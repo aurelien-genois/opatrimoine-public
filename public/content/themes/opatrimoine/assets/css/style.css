@@ -29,13 +29,14 @@ h4 {
     
 }
 
-#connection {
+.button {
     width: 90px;
     height: 30px;
     margin-top: auto;
     margin-bottom: auto;
     border: none;
     background-color: #caa12f;
+    cursor: pointer;
     color: white;
 }
 

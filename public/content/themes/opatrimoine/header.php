@@ -40,6 +40,6 @@
                 ?>
             </div>
 
-        <button id="connection">Connexion</button>
+        <button id="connection" class="button">Connexion</button>
     
 </header>
