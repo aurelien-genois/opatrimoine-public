@@ -37,6 +37,10 @@ add_action(
             'global-style',
             get_theme_file_uri('assets/css/style.css'),
         );
+        wp_enqueue_style(
+            'places-style',
+            get_theme_file_uri('assets/css/places.css'),
+        );
         wp_enqueue_script(
             'sample_script',
             get_theme_file_uri('assets/css/script.js'),
