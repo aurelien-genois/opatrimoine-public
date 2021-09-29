@@ -3,6 +3,7 @@ import router from './router'
 import vuetify from './plugins/vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
+import Header from './Header.vue'
 import Carousel from './Carousel.vue'
 import Timeline from './Timeline.vue'
 
@@ -12,6 +13,7 @@ import Timeline from './Timeline.vue'
 Vue.config.productionTip = false;
 
 const components = {
+  '#header': Header,
   '#carousel': Carousel,
   '#timeline': Timeline,
 

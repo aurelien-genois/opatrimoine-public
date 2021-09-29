@@ -15,10 +15,7 @@ h4 {
     margin-bottom: auto;
 }
 
-p {
 
-    font-family: 'Be Vietnam Pro', sans-serif;
-}
 
 
 .opatrimoine-logo {
@@ -78,8 +75,19 @@ li a {
     
 }
 
+#presentation {
+    margin-left: 40px !important;
+    margin-right: 40px !important;
+    margin-top: 20px !important;
+}
+
 h2 {
     font-family: 'Antic Didone', serif;
+}
+
+p {
+
+    font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 
