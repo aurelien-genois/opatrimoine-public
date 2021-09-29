@@ -130,6 +130,17 @@ class Plugin
         $placesDatas = new PlacesDatas();
         $places = $placesDatas->getPlaces();
 
+        // todo to test for delete cpt before genetate
+        // $existingPlaces = get_posts([
+        //     'post_type' => 'places',
+        //     'posts_per_page' => -1
+        // ]);
+
+        // foreach($existingPlaces as $place) {
+        //     wp_delete_post($place->id);
+        // }
+        // end to test
+
         foreach($places as $place) {
             $postId = wp_insert_post($place);
 
