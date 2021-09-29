@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -30,27 +29,23 @@
 
 <div id="header"></div>
   
-        <a href="#" class="logo"> <img class="opatrimoine-logo" src="/spe-wp/opatrimoine/public/content/themes/opatrimoine/assets/image/opatrimoinelogo.png" alt="O'Patrimoine logo">
+        <a href="<?= home_url('/') ?>" class="logo"> <img class="opatrimoine-logo" src="/spe-wp/opatrimoine/public/content/themes/opatrimoine/assets/image/opatrimoinelogo.png" alt="O'Patrimoine logo">
              <h4>O'Patrimoine</h4> 
         </a>
      
             <div class="menu">
                 <?php
-                // nous allons afficher le menu "nav". Ce menu a été défini dans le backoffice de wp Apparence -> Personnaliser -> Menu
-                // IMPORTANT WP afficher un menu wordpress
-                // DOC https://developer.wordpress.org/reference/functions/wp_nav_menu/
                     wp_nav_menu([
-                        'theme_location' => 'header_menu', // première clé : quel menu nous souhaitons afficher
-                        'container' => 'nav',    // la balise HTML qui sera utilisée pour encapsuler le menu
-                    
-                        'echo' => true,    // permet d'afficher le menu
+                        'menu' => 'header_menu', 
+                        'container' => 'nav', 
+                        'echo' => true,  
                     ]);
 
                     
                 ?>
             </div>
 
-        <button id="connection">Connexion</button>
+        <button id="connection" class="button">Connexion</button>
     
     
 </header>

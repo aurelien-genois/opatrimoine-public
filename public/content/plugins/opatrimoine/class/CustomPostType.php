@@ -18,13 +18,15 @@ class CustomPostType
     public $label;
     public $icon;
     public $fields;
+    public $hasArchive;
 
-    public function __construct($identifier, $label, $icon, $fields)
+    public function __construct($identifier, $label, $icon, $fields, $hasArchive)
     {
         $this->identifier = $identifier;
         $this->label = $label;
         $this->icon = $icon;
         $this->fields = $fields;   
+        $this->hasArchive = $hasArchive;   
     }
 
     public function register()
@@ -40,6 +42,7 @@ class CustomPostType
                 'supports' => $this->supports,
                 'capability_type' => $this->identifier,
                 'map_meta_cap' => true,
+                'has_archive' => $this->hasArchive,
             ],
         );
         

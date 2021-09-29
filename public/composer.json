@@ -31,7 +31,8 @@
 
         "wpackagist-plugin/advanced-custom-fields": "*",
         "wpackagist-plugin/acf-to-rest-api": "*",
-        "wpackagist-plugin/fakerpress": "*"
+        "wpackagist-plugin/fakerpress": "*",
+        "wpackagist-plugin/query-monitor": "^3.7"
     },
 
     "scripts": {
@@ -69,4 +70,3 @@
         ]
     }
 }
-
