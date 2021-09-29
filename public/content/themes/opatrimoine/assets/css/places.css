@@ -1,3 +1,11 @@
 .places-list-form {
     background-color: green;
 }
+
+.load-more-btn {
+    color: black;
+    background-color: papayawhip;
+    padding: 4px;
+    border: peru solid 2px;
+    text-align: center;
+}

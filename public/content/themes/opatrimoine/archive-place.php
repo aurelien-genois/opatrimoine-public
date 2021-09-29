@@ -39,7 +39,7 @@ $cities = getCities();
     </form>
 
     <!-- places-list -->
-    <section>
+    <section class="post-listing">
     <?php
     if(have_posts()) {
         while (have_posts()) {

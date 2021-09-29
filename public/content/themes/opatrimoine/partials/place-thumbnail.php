@@ -9,5 +9,6 @@
     <?php the_post_thumbnail_url(); ?>
     <?php the_excerpt(); ?>
     <?php the_permalink(); ?>
-
+    <hr>
+    <hr>
 </article>
