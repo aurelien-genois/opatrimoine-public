@@ -9,6 +9,10 @@ function opatrimoine_initialize_theme() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('menus');
+    // hide admin bar on front if not a admin
+    if (!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+      }
 };
 
 
