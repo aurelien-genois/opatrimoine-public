@@ -25,7 +25,8 @@ function place_pre_get_posts($query) {
                     ],
                 ]);
             }
-        }     
+        }   
+        add_filter( 'posts_where', 'title_filter', 10, 2 );  
     }
 }
 
@@ -131,6 +132,8 @@ function be_load_more_js() {
       $args['post_type'] = isset( $args['post_type'] ) ? esc_attr( $args['post_type'] ) : 'post';
       $args['paged'] = esc_attr( $_POST['page'] );
       $args['post_status'] = 'publish';
+      
+      add_filter( 'posts_where', 'title_filter', 10, 2 ); 
 
       ob_start();
       $loop = new WP_Query( $args );
