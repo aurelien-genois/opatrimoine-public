@@ -88,17 +88,27 @@ function getCities() {
  *
  */
 function be_load_more_js() {
-  
-    // if( ! is_singular( 'post' ) )
-    //   return;
+    $placeName = "";
+    $placeType = "";
+    $placeCity = "";
+
+    if (!empty($_GET['place-name'])) {
+        $placeName = $_GET['place-name'];
+    };
+    if (!empty($_GET['place-city'])) {
+        $placeCity = $_GET['place-city'];
+    };
+    if (!empty($_GET['place-type'])) {
+        $placeType = $_GET['place-type'];
+    };
 
     // on peut fusionner $wp_query->query
     $query = [
         "post_type" => "place",
-        "place-type" => $_GET['place-type'],
+        "place-type" => $placeType,
         'meta_key' => 'city',
-        'meta_value' => $_GET['place-city'],
-        'custom_s' => $_GET['place-name'], // for the title_filter
+        'meta_value' => $placeCity,
+        'custom_s' => $placeName, // for the title_filter
         'posts_per_page' => 3,
     ];
     $args = array(
