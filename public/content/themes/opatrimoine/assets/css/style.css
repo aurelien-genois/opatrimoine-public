@@ -1,15 +1,13 @@
 header {
     display:flex;
     justify-content: space-around;
-
-
 }
 
 h4 {
 
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 1.1em;
-    color: black;
+    color: var(--text-color);
     font-weight: bold;
     margin-top: auto;
     margin-bottom: auto;
@@ -38,32 +36,27 @@ h4 {
     margin-top: auto;
     margin-bottom: auto;
     border: none;
-    background-color: #caa12f;
+    background-color: var(--main-color);
     cursor: pointer;
-    color: white;
+    color: var(--text-color-light);
 }
 
 .menu {
     margin-top: auto;
     margin-bottom: auto;
- 
 }
 
 
 
 .links:hover {
-    color: #949494,
+    color: var(--links-hover-color),
 }
 
 
 ul {
     list-style: none;
     display: flex;
-    flex-direction: row;
-
-    
-     
-    
+    flex-direction: row;  
 }
 
 li a {
@@ -71,9 +64,8 @@ li a {
     margin-right: 3em;
     margin-top: auto;
     margin-bottom: auto;
-    color: black;
-    text-decoration: none !important;
-    
+    color: var(--text-color);
+    text-decoration: none !important; 
 }
 
 #presentation {
@@ -99,7 +91,6 @@ p {
     flex-wrap: wrap !important;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: small;
-
 }
 
 
@@ -107,14 +98,11 @@ p {
 
 
 .social-media  {
-
     font-size: 20px;
     margin-right: 1.5em;
-
     flex-direction: row !important;
     justify-content: space-around !important;
     align-content: flex-start !important;
-
 }
 
 #menu-footer-menu {

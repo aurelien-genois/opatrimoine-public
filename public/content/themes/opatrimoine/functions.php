@@ -28,20 +28,17 @@ $footerMenu_id = wp_create_nav_menu('footer_menu');
 //     'menu-item-status'  => 'publish'
 // ) );
 
-
-
-
-// =========================================================
-// IMPORTANT WP wp_enqueue_scripts, ajouter des fichiers css/js à charger dans le thème
+// add style and script files
 add_action(
     'wp_enqueue_scripts',
     function() {
-        // IMPORTANT WP chargement d'un fichier css
-        // DOC WP wp_enqueue_style https://developer.wordpress.org/reference/functions/wp_enqueue_style/
         wp_enqueue_style(
-            'global-style', // identifiant du fichier css
-            // get_theme_file_uri calcul automatiquement l'url du fichier demandé
-            get_theme_file_uri('assets/css/style.css'), // url du fichier css
+            'variables-style',
+            get_theme_file_uri('assets/css/variables.css'),
+        );
+        wp_enqueue_style(
+            'global-style',
+            get_theme_file_uri('assets/css/style.css'), 
         );
 
         wp_enqueue_style(
