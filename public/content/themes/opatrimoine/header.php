@@ -27,7 +27,6 @@
 
 <header>
 
-<div id="header"></div>
   
         <a href="<?= home_url('/') ?>" class="logo"> <img class="opatrimoine-logo" src="/spe-wp/opatrimoine/public/content/themes/opatrimoine/assets/image/opatrimoinelogo.png" alt="O'Patrimoine logo">
              <h4>O'Patrimoine</h4> 
