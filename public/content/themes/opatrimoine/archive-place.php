@@ -5,7 +5,7 @@ $placeTypes = getPlaceTypes();
 $cities = getCities();
 
 ?>
-<main>
+<main class="page-content">
 
     <h1>Liste des lieux</h1>
 

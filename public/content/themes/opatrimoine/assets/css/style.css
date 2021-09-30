@@ -1,5 +1,26 @@
 body {
     background-color: var(--white-color);
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+a {
+    text-decoration: none; 
+}
+
+@media screen and (min-width: 700px) {
+    .page-content {
+        margin: 0 100px;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .page-content {
+        margin: 0 200px;
+    }
+}
+@media screen and (min-width: 1
+1600px) {
+    .page-content {
+        margin: 0 400px;
+    }
 }
 
 /* header */
@@ -45,13 +66,15 @@ ul {
     flex-direction: row;  
 }
 
-li a {
+a {
     font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--black-color);
+    text-decoration: none; 
+}
+li a {
     margin-right: 3em;
     margin-top: auto;
     margin-bottom: auto;
-    color: var(--black-color);
-    text-decoration: none !important; 
 }
 
 .button, button[type="submit"] {

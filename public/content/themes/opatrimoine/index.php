@@ -4,11 +4,11 @@ get_header();
 
 
 
-<main>
-
 <?php
     get_template_part('partials/carousel');
 ?>
+<main class="page-content">
+
 
 <section id='presentation'> 
 
