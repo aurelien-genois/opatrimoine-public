@@ -1,0 +1,32 @@
+.login h1 a {
+  background-image: none;
+}
+.login h1::after {
+  content: "oPatrimoine";
+  font-size: 2rem;
+  color: whitesmoke;
+  
+}
+
+#login {
+
+padding: 0 0 0 !important;
+
+}
+
+body {
+  background-color: #fff;
+  background-image:
+    radial-gradient(circle, rgba(202, 161, 47, 1) 20%, rgba(253, 253, 253, 0.973) 100%);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#reg_passmail {
+  display: none;
+}
+
+#registerform {
+  background-color: white;
+  backdrop-filter: blur(2px);
+}

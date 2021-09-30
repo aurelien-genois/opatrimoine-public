@@ -46,7 +46,8 @@
             </div>
 
         <a class="button" href="<?= get_home_url(); ?>/connexion">Connexion</a>
+        
         <a class="button" href="<?= wp_registration_url(); ?>">S'inscrire</a>
-    
-    
+        
+
 </header>
