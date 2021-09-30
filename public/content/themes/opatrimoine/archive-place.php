@@ -10,7 +10,7 @@ $cities = getCities();
     <h1>Liste des lieux</h1>
 
     <form class="places-list-form">
-        <div>
+        <div class="inputs-container">
             <fieldset>
                 <input type="text" id="place-name" name="place-name" value="<?= $_GET['place-name'] ?? '' ?>">
 
@@ -35,7 +35,7 @@ $cities = getCities();
             </fieldset>
             <!-- NTH add input for guided-tours thematics -->
         </div>
-        <button type="submit">Filtrer</button>
+        <button type="submit" class="button">Filtrer</button>
     </form>
 
     <!-- places-list -->

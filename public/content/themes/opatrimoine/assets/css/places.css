@@ -1,9 +1,42 @@
+:focus {
+    outline: transparent none 0px;
+  }
+
 .places-list-form {
-    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.places-list-form select {
+    -moz-appearance: auto;
+    -webkit-appearance: auto;
+}
+
+.places-list-form .inputs-container {
+    width: 100%;
+    margin-right: 20px;
+}
+.places-list-form fieldset {
+    display: flex;
+    border: transparent 0 solid;
+    justify-content: space-between;
+}
+.places-list-form input, .places-list-form select {
+    border: solid var(--light-grey-color) 2px;
+}
+.places-list-form input:focus, .places-list-form select:focus, .places-list-form input:active, .places-list-form select:active {
+    border: solid var(--main-color) 2px;
+}
+.places-list-form input[name="place-name"] {
+    width: 50%;
+}
+.places-list-form select[name="place-type"], .places-list-form select[name="place-city"] {
+    width: 24%;;
 }
 
 .load-more-btn {
-    color: var(--text-color);
+    color: var(--black-color);
     padding: 4px;
     border: var(--main-color) solid 2px;
     text-align: center;
