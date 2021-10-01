@@ -38,7 +38,7 @@ class Plugin
             'label' => 'Visites guidées',
             'icon' => 'dashicons-calendar-alt',
             'fields' => [
-                ['key' => 'starthour', 'label' => 'Heure de début', 'name' => 'starthour', 'type' => 'time_picker'],
+                ['key' => 'date', 'label' => 'Jour de la visite', 'name' => 'date', 'type' => 'date_time_picker', 'display_format' => 'd/m/Y H:i', 'return_format' => 'Y-m-d H:i'],
                 ['key' => 'duration', 'label' => 'Duréé estimée', 'name' => 'duration', 'type' => 'text'],
                 ['key' => 'totalpersons', 'label' => 'Nombre de personnes totale', 'name' => 'totalpersons', 'type' => 'number'],
                 // Relationship field to links a guided-tour to a specific place
@@ -183,7 +183,7 @@ class Plugin
             $postId = wp_insert_post($guidedTour);
             // ACF populate custom fields
             if(function_exists('update_field')) {
-                update_field('starthour', $guidedTour['acf-starthour'], $postId);
+                update_field('date', $guidedTour['acf-date'], $postId);
                 update_field('duration', $guidedTour['acf-duration'], $postId);
                 update_field('totalpersons', $guidedTour['acf-totalpersons'], $postId);
                 update_field('placeoftour', $guidedTour['acf-placeoftour'], $postId);

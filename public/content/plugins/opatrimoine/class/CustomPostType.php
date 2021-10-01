@@ -77,6 +77,19 @@ class CustomPostType
                     $data['return_format'],
                     $data['post_type'],
                 );
+            } else if($data['type'] == 'date_time_picker') {
+                $fieldsDescriptors[] = $this->getFieldDescriptor(
+                    $data['key'],
+                    $data['label'],
+                    $data['name'],
+                    $data['type'],
+                    'no',
+                    'no',
+                    $data['return_format'],
+                    '',
+                    $data['display_format'],
+                    // $data['first_day'],
+                );
             } else {
                 $fieldsDescriptors[] = $this->getFieldDescriptor(
                     $data['key'],
@@ -115,7 +128,7 @@ class CustomPostType
         }
     }
 
-    protected function getFieldDescriptor($fieldKey, $fieldLabel, $fieldName, $fieldType = 'text', $fieldAllowNull = 'no', $fieldMultiple = 'no', $fieldReturnFormat = '', $fieldPostType = '')
+    protected function getFieldDescriptor($fieldKey, $fieldLabel, $fieldName, $fieldType = 'text', $fieldAllowNull = 'no', $fieldMultiple = 'no', $fieldReturnFormat = '', $fieldPostType = '', $fieldDisplayFormat = '')
     {
         return [
             'key' => $fieldKey,
@@ -124,7 +137,7 @@ class CustomPostType
             'type' => $fieldType,
             'prefix' => '',
             'instructions' => '',
-            'required' => 0,
+            'required' => 1,
             'conditional_logic' => 0,
             'wrapper' => array (
                 'width' => '',
@@ -138,11 +151,13 @@ class CustomPostType
             'maxlength' => '',
             'readonly' => 0,
             'disabled' => 0,
-            // Additionnal key for post_object field
+            // Additionnal keys for post_object field
             'allow_null' => $fieldAllowNull, 
             'multiple' => $fieldMultiple, 
             'return_format' => $fieldReturnFormat, 
             'post_type' => $fieldPostType,
+            // Additionnal key for date_picker field
+            'display_format' => $fieldDisplayFormat,
         ];
     }
 }

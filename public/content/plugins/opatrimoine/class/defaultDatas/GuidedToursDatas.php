@@ -25,7 +25,7 @@ class GuidedToursDatas
                 'tax_input' => ['tour-thematic' => ['Renaissance']],
                 'comment_status' => 'closed',
                 // ACF custom fields
-                'acf-starthour' => '01:00:00',
+                'acf-date' => '10/03/2021 14:00', // ! format m/d/Y H:i
                 'acf-duration' => '01:30',
                 'acf-totalpersons' => 38,
                 'acf-placeoftour' => $this->placesPostsIds[0],
@@ -39,7 +39,7 @@ class GuidedToursDatas
                 'tax_input' => ['tour-thematic' => ['Noblesse']],
                 'comment_status' => 'closed',
                 // ACF custom fields
-                'acf-starthour' => '13:00:00',
+                'acf-date' => '10/03/2021 12:00', // ! format m/d/Y H:i
                 'acf-duration' => '02:00',
                 'acf-totalpersons' => 12,
                 'acf-placeoftour' =>  $this->placesPostsIds[0],
@@ -53,7 +53,7 @@ class GuidedToursDatas
                 'tax_input' => ['tour-thematic' => ['Noblesse']],
                 'comment_status' => 'closed',
                 // ACF custom fields
-                'acf-starthour' => '13:00:00',
+                'acf-date' => '10/03/2021 10:00', // ! format m/d/Y H:i
                 'acf-duration' => '02:00',
                 'acf-totalpersons' => 12,
                 'acf-placeoftour' =>  $this->placesPostsIds[1],
@@ -67,7 +67,7 @@ class GuidedToursDatas
                 'tax_input' => ['tour-thematic' => ['Noblesse']],
                 'comment_status' => 'closed',
                 // ACF custom fields
-                'acf-starthour' => '13:00:00',
+                'acf-date' => '10/02/2021 14:00', // ! format m/d/Y H:i
                 'acf-duration' => '02:00',
                 'acf-totalpersons' => 12,
                 'acf-placeoftour' =>  $this->placesPostsIds[1],
@@ -81,7 +81,7 @@ class GuidedToursDatas
                 'tax_input' => ['tour-thematic' => ['Noblesse']],
                 'comment_status' => 'closed',
                 // ACF custom fields
-                'acf-starthour' => '13:00:00',
+                'acf-date' => '10/02/2021 12:00', // ! format m/d/Y H:i
                 'acf-duration' => '02:00',
                 'acf-totalpersons' => 12,
                 'acf-placeoftour' =>  $this->placesPostsIds[2],
@@ -95,7 +95,7 @@ class GuidedToursDatas
                 'tax_input' => ['tour-thematic' => ['Noblesse']],
                 'comment_status' => 'closed',
                 // ACF custom fields
-                'acf-starthour' => '13:00:00',
+                'acf-date' => '10/02/2021 10:00', // ! format m/d/Y H:i
                 'acf-duration' => '02:00',
                 'acf-totalpersons' => 12,
                 'acf-placeoftour' =>  $this->placesPostsIds[2],
