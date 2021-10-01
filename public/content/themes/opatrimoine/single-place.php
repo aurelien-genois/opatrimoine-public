@@ -1,6 +1,8 @@
 <?php
 get_header();
 the_post();
+
+$guidedTours = getGuidedToursByPlaceId(get_the_ID());
 ?>
 
 
@@ -30,7 +32,7 @@ the_post();
     <section class="place-tours">
         <h2>Visites</h2>
         <!-- TODO create the vuetify component -->
-        <div id="tours-calendar"></div>
+        <div id="tours-calendar" data-vue="<?= json_encode($guidedTours); ?>"></div>
     </section>
 
     <!-- NTH add comments form -->

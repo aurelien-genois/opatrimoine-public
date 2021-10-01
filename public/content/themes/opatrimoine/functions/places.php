@@ -77,6 +77,32 @@ function getCities() {
     return $cities;
 }
 
+function getGuidedToursByPlaceId($placeId) {
+    // not need to test if a single-place page, because the function is called only in the single-place file
+    // if (! is_singular('place')){
+    //     return;
+    // }
+
+    $guidedTours = get_posts([
+        'posts_per_page' => -1,
+        'post_type' => 'guided-tour',
+        'meta_key' => 'placeoftour',
+        'meta_value' => $placeId,
+    ]);
+
+    foreach($guidedTours as $guidedTour) {
+        $fields = get_fields($guidedTour->ID);
+        foreach($fields as $key => $value) {
+            // placeoftour is already used above, adding it to the guided-tour post object loads the entire post object of the current place post (not only the ID) which is not necessary
+            if($key !== "placeoftour") {
+                $guidedTour->{$key} = $value;
+            }
+        }
+    }
+
+    return $guidedTours;
+}
+
 
 
 // ===========================
@@ -89,6 +115,10 @@ function getCities() {
  *
  */
 function be_load_more_js() {
+
+    if (!is_post_type_archive('place')) {
+        return;
+    }
     $placeName = "";
     $placeType = "";
     $placeCity = "";
@@ -113,38 +143,37 @@ function be_load_more_js() {
         'posts_per_page' => 3,
     ];
     $args = array(
-      'url'   => admin_url( 'admin-ajax.php' ),
-      'query' => $query,
+        'url'   => admin_url( 'admin-ajax.php' ),
+        'query' => $query,
     );
 
     wp_enqueue_script( 'be-load-more', get_stylesheet_directory_uri() . '/assets/js/load-more.js', array( 'jquery' ), '1.0', true );
     wp_localize_script( 'be-load-more', 'beloadmore', $args );
-  }
-  add_action( 'wp_enqueue_scripts', 'be_load_more_js' );
-  
-  /**
-   * AJAX Load More 
-   *
-   */
-  function be_ajax_load_more() {
-    
-      $args = isset( $_POST['query'] ) ? array_map( 'esc_attr', $_POST['query'] ) : array();
-      $args['post_type'] = isset( $args['post_type'] ) ? esc_attr( $args['post_type'] ) : 'post';
-      $args['paged'] = esc_attr( $_POST['page'] );
-      $args['post_status'] = 'publish';
-      
-      add_filter( 'posts_where', 'title_filter', 10, 2 ); 
+}
+add_action( 'wp_enqueue_scripts', 'be_load_more_js' );
 
-      ob_start();
-      $loop = new WP_Query( $args );
-      if( $loop->have_posts() ): while( $loop->have_posts() ):          
-            $loop->the_post();
-            get_template_part('partials/place-thumbnail');
-      endwhile; endif; wp_reset_postdata();
-      $data = ob_get_clean();
-      wp_send_json_success( $data );
-      wp_die();
-  }
-  add_action( 'wp_ajax_be_ajax_load_more', 'be_ajax_load_more' );
-  add_action( 'wp_ajax_nopriv_be_ajax_load_more', 'be_ajax_load_more' );
-  
+/**
+ * AJAX Load More 
+ *
+ */
+function be_ajax_load_more() {
+
+    $args = isset( $_POST['query'] ) ? array_map( 'esc_attr', $_POST['query'] ) : array();
+    $args['post_type'] = isset( $args['post_type'] ) ? esc_attr( $args['post_type'] ) : 'post';
+    $args['paged'] = esc_attr( $_POST['page'] );
+    $args['post_status'] = 'publish';
+    
+    add_filter( 'posts_where', 'title_filter', 10, 2 ); 
+
+    ob_start();
+    $loop = new WP_Query( $args );
+    if( $loop->have_posts() ): while( $loop->have_posts() ):          
+        $loop->the_post();
+        get_template_part('partials/place-thumbnail');
+    endwhile; endif; wp_reset_postdata();
+    $data = ob_get_clean();
+    wp_send_json_success( $data );
+    wp_die();
+}
+add_action( 'wp_ajax_be_ajax_load_more', 'be_ajax_load_more' );
+add_action( 'wp_ajax_nopriv_be_ajax_load_more', 'be_ajax_load_more' );

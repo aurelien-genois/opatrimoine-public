@@ -31,7 +31,7 @@ class GuidedToursDatas
                 'acf-placeoftour' => $this->placesPostsIds[0],
             ],
             [
-                'post_title' => 'Une autre visite',
+                'post_title' => 'Une autre visite 1',
                 'post_content' => 'Ceci est la description d\'une visite guidée',
                 'post_excerpt' => 'Anciennement Palais d’Orsay et gare, le musée d’Orsay est un musée important de Paris depuis 1986, spécialisé sur le XIXeme siècle.',
                 'post_type' => 'guided-tour',
@@ -45,7 +45,7 @@ class GuidedToursDatas
                 'acf-placeoftour' =>  $this->placesPostsIds[0],
             ],
             [
-                'post_title' => 'Une autre visite',
+                'post_title' => 'Une autre visite 2',
                 'post_content' => 'Ceci est la description d\'une visite guidée',
                 'post_excerpt' => 'Anciennement Palais d’Orsay et gare, le musée d’Orsay est un musée important de Paris depuis 1986, spécialisé sur le XIXeme siècle.',
                 'post_type' => 'guided-tour',
@@ -59,7 +59,7 @@ class GuidedToursDatas
                 'acf-placeoftour' =>  $this->placesPostsIds[1],
             ],
             [
-                'post_title' => 'Une autre visite',
+                'post_title' => 'Une autre visite 3',
                 'post_content' => 'Ceci est la description d\'une visite guidée',
                 'post_excerpt' => 'Anciennement Palais d’Orsay et gare, le musée d’Orsay est un musée important de Paris depuis 1986, spécialisé sur le XIXeme siècle.',
                 'post_type' => 'guided-tour',
@@ -73,7 +73,7 @@ class GuidedToursDatas
                 'acf-placeoftour' =>  $this->placesPostsIds[1],
             ],
             [
-                'post_title' => 'Une autre visite',
+                'post_title' => 'Une autre visite 4',
                 'post_content' => 'Ceci est la description d\'une visite guidée',
                 'post_excerpt' => 'Anciennement Palais d’Orsay et gare, le musée d’Orsay est un musée important de Paris depuis 1986, spécialisé sur le XIXeme siècle.',
                 'post_type' => 'guided-tour',
@@ -87,7 +87,7 @@ class GuidedToursDatas
                 'acf-placeoftour' =>  $this->placesPostsIds[2],
             ],
             [
-                'post_title' => 'Une autre visite',
+                'post_title' => 'Une autre visite 5',
                 'post_content' => 'Ceci est la description d\'une visite guidée',
                 'post_excerpt' => 'Anciennement Palais d’Orsay et gare, le musée d’Orsay est un musée important de Paris depuis 1986, spécialisé sur le XIXeme siècle.',
                 'post_type' => 'guided-tour',
