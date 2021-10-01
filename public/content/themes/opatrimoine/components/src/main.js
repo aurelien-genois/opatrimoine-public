@@ -6,17 +6,18 @@ import 'vuetify/dist/vuetify.min.css'
 
 import Carousel from './Carousel.vue'
 import Timeline from './Timeline.vue'
+import Calendar from './Calendar.vue'
 
 
 
 
 Vue.config.productionTip = false;
 
+// indicates at which id selector in html corresponds the composant
 const components = {
-  
   '#carousel': Carousel,
   '#timeline': Timeline,
-
+  '#tours-calendar': Calendar,
 };
 
 
