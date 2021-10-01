@@ -24,7 +24,16 @@ class ACL
 
             // Liste des "capabilities" (droits) accordés au rôle "customer"
             [                
-                'create_posts' => true,
+                'delete_others_pages' => true,
+                'delete_pages' => true,
+                'delete_private_pages' => true,
+                'delete_published_pages' => true,
+                'edit_others_pages' => true,
+                'edit_pages' => true,
+                'edit_private_pages' => true,
+                'edit_published_pages' => true,
+                'publish_pages' => true,
+                'read_private_pages' => true,
 
                 'delete_guided-tours' => true,
                 'delete_others_guided-tours' => true,
@@ -32,31 +41,26 @@ class ACL
                 'delete_others_posts' => true,
 
                 'delete_places' => true,
-                'delete_posts' => true,
 
                 'delete_private_guided-tours' => true,
                 'delete_private_places' => true,
                 'delete_private_posts' => true,
-                
+
                 'delete_published_guided-tours' => true,
                 'delete_published_places' => true,
-                'delete_published_posts' => true,
 
                 'edit_guided-tours' => true,
                 'edit_others_guided-tours' => true,
                 'edit_others_places' => true,
-                // 'edit_others_posts' => true,
+             
                 'edit_places' => true,
-                'edit_posts' => true,
                 'edit_private_guided-tours' => true,
-                // 'edit_private_posts' => true,
+            
                 'edit_published_guided-tours' => true,
                 'edit_published_places' => true,
-                'edit_published_posts' => true,
 
                 'publish_guided-tours' => true,
                 'publish_places' => true,
-                'publish_posts' => true, 
                 
                 'read_private_guided-tours' => true,
                 'read_private_places' => true,
@@ -66,6 +70,7 @@ class ACL
         ); 
     }
 
+    
     public function deleteCustomerRole()
     {
         // STEP ACL suppression d'un rôle
@@ -83,19 +88,9 @@ class ACL
             'member',
             'Membre',
             [   
-                // 'create_users' => true,
-                // 'delete_users' => true,
-                // 'edit_users' => true,
 
-                'create_posts' => true,        
-                'edit_private_posts' => true,
-                'publish_posts' => true,
-                'read_private_posts' => true,                
-                
-                'delete_private_guided-tours' => true,
+                'read_private_places' => true,        
                 'read_private_guided-tours' => true,
-              
-                // 'read_private_places' => true,
 
                 
             ]
