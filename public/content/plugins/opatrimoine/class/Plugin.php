@@ -9,7 +9,16 @@ use OPatrimoine\defaultDatas\TourThematicsDatas;
 use WP_Http;
 
 class Plugin
-{    
+{   
+    
+    /**
+     * Instance de OPatrimoine\ACL, gestion des rôles & capabilities
+     *
+     * @var OPatrimoine\ACL
+     */
+    protected $acl;
+    
+    
     // cpt definitions
     public $customPostTypes = [
         'place' => [
@@ -66,6 +75,9 @@ class Plugin
     // plugin initialization
     public function __construct() 
     {
+      
+        $this->acl = new ACL();
+        
         
         add_action(
             'init',
@@ -272,11 +284,20 @@ class Plugin
         $this->generateGuidedTours();
 
         $this->addPostsArchiveNavMenuItem('header_menu', 'Liste des lieux', 'place');
+
+        // STEP ACL création des rôles
+        $this->acl->createCustomerRole();
+        $this->acl->createMemberRole();
     
     }
 
     public function deactivate()
     {
         $this->deletePostsArchiveNavMenuItem('header_menu', 'Liste des lieux');
+        
+        // à la désactivation du plugin, nous supprimons les rôles
+        $this->acl->deleteCustomerRole(); 
+        $this->acl->deleteMemberRole();
+        
     }
 }
