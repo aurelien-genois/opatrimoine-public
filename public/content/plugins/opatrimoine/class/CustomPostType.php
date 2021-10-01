@@ -40,9 +40,12 @@ class CustomPostType
                 'hierarchical' => false,
                 'menu_icon' => $this->icon,
                 'supports' => $this->supports,
+                'has_archive' => $this->hasArchive,                
+                // IMPORTANT WP ACL création de droits spécifique aux cpts
+                // ACL : Access Control List                
                 'capability_type' => $this->identifier,
                 'map_meta_cap' => true,
-                'has_archive' => $this->hasArchive,
+
             ],
         );
         
