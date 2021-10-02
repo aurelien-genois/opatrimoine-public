@@ -23,7 +23,10 @@ class ACL
 
 
             // Liste des "capabilities" (droits) accordés au rôle "customer"
-            [                
+            [   
+                'view_admin_as' => true,
+                'view_admin_as_role_defaults' => true,
+                
                 'delete_others_pages' => true,
                 'delete_pages' => true,
                 'delete_private_pages' => true,
@@ -70,7 +73,7 @@ class ACL
         ); 
     }
 
-    
+
     public function deleteCustomerRole()
     {
         // STEP ACL suppression d'un rôle

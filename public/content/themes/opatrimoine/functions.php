@@ -5,6 +5,17 @@ add_action(
     'opatrimoine_initialize_theme',
 );
 
+add_action( 'wp_login', 'on_customer_login', 10, 2 );
+function on_customer_login( $user_login, WP_User $user ) {
+ 
+    // do not send email if user has already logged in once
+    if ( !current_user_can( 'customer' )  ) {
+        return;
+    }
+    wp_redirect('TonUrlDuBackOffice');
+    exit;
+}
+
 function opatrimoine_initialize_theme() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
