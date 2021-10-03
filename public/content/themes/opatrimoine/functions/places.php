@@ -98,6 +98,14 @@ function getGuidedToursByPlaceId($placeId) {
                 $guidedTour->{$key} = $value;
             }
         }
+
+        $thematics = get_the_terms
+        ($guidedTour->ID, 'tour-thematic');
+        $thematicsNames = [];
+        foreach($thematics as $thematic) {
+            $thematicsNames[] = $thematic->name;
+        }
+        $guidedTour->thematics = $thematicsNames;
     }
 
     return $guidedTours;
