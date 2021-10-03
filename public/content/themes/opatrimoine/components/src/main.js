@@ -41,7 +41,8 @@ for(let selector in components) {
     if(element.dataset.vue) {
       const data = JSON.parse(element.dataset.vue);
       // nous injection les variables passé dans le template wordpress à tous les composants vuejs
-      Vue.prototype.$wordpressData = data;
+      const dataKey = selector.substring(1);
+      Vue.prototype.$wordpressData = {[dataKey]: data};
     }
 
 
