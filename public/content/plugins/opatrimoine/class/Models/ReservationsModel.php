@@ -81,10 +81,15 @@ class ReservationsModel extends CoreModel {
         //   }
         
         $guidedToursIdList = [];
+        $numbersOfReservationsByGuidedToursId = [];
         foreach($results as $reservationsResult) {
-            $guidedToursIdList[] = $reservationsResult->guided_tour_id;
-        }
+            $guidedTourId = $reservationsResult->guided_tour_id;
 
+            $guidedToursIdList[] = $guidedTourId;
+
+            $numbersOfReservationsByGuidedToursId[$guidedTourId] = $reservationsResult->nb_of_reservations;
+        }
+        
         $guidedTours = [];
         if(!empty($guidedToursIdList)) {
             $guidedTours = get_posts([
@@ -95,6 +100,7 @@ class ReservationsModel extends CoreModel {
         }
 
         foreach($guidedTours as $guidedTour) {
+            // add acf fields to the guidedTour object
             $fields = get_fields($guidedTour->ID);
             foreach($fields as $key => $value) {
                 // acf relational-field placeoftour is needed to load the entire post object of the place associated to display the place name
@@ -104,6 +110,7 @@ class ReservationsModel extends CoreModel {
             // add the acf field city to the place post object
             $guidedTour->placeoftour->city = get_field('city', $guidedTour->placeoftour->ID);
             
+            // add thematics array to the guidedTour object
             $thematics = get_the_terms
             ($guidedTour->ID, 'tour-thematic');
             $thematicsNames = [];
@@ -111,9 +118,10 @@ class ReservationsModel extends CoreModel {
                 $thematicsNames[] = $thematic->name;
             }
             $guidedTour->thematics = $thematicsNames;
-        }
 
-        // todo add nb_of_reservation for this member
+            // add nb_of_reservations from this member to the guidedTour object
+            $guidedTour->current_member_reservations = $numbersOfReservationsByGuidedToursId[$guidedTour->ID];
+        }
         
         return $guidedTours;
     }
