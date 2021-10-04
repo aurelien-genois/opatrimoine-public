@@ -24,4 +24,10 @@ class ReservationsController extends CoreController {
         echo "<h1>Test de insertion dans la table opatrimoine_reservations</h1>";
         $this->model->insert(967, 51, 3);
     }
+    
+    public function deleteByTourIdAndMemberId($guidedTourId, $memberId)
+    {
+        echo "<h1>Test de suppression dans la table opatrimoine_reservations via guided_tour_id et member_id</h1>";
+        $this->model->deleteByTourIdAndMemberId($guidedTourId, $memberId);
+    }
 }

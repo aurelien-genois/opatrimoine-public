@@ -42,4 +42,17 @@ class ReservationsModel extends CoreModel {
             $data
         );
     }
+
+    public function deleteByTourIdAndMemberId($guidedTourId, $memberId)
+    {
+        $where = [
+            'guided_tour_id' => $guidedTourId,
+            'member_id' => $memberId,
+        ];
+
+        $this->database->delete(
+            $this->getTableName(),
+            $where
+        );
+    }
 }

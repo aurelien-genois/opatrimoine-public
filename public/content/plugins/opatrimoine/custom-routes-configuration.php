@@ -118,15 +118,15 @@ $router->map(
 // );
 
 
-// $router->map(
-//     'GET',
-//     '/test/project-developer/delete-by-project-and-developer/[i:projectId]/[i:developerId]/',
-//     function($projectId, $developerId) {
-//        $controller = new ProjectDeveloperController();
-//        $controller->deleteByProjectAndDeveloper($projectId, $developerId);
-//     },
-//     'test-project-developer-delete-by-project-and-developper'
-// );
+$router->map(
+    'GET',
+    '/test/reservations/delete-by-guided-tour-id-and-member-id/[i:guidedTourId]/[i:memberId]/',
+    function($guidedTourId, $memberId) {
+       $controller = new ReservationsController();
+       $controller->deleteByTourIdAndMemberId($guidedTourId,$memberId);
+    },
+    'test-reservations-delete-by-guided-tour-id-and-member-id'
+);
 
 // $router->map(
 //     'GET',
