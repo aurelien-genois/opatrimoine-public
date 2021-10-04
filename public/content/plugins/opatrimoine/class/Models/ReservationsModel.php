@@ -111,7 +111,6 @@ class ReservationsModel extends CoreModel {
                 $thematicsNames[] = $thematic->name;
             }
             $guidedTour->thematics = $thematicsNames;
-            // todo add nb_of_place reserved
         }
 
         // todo add nb_of_reservation for this member

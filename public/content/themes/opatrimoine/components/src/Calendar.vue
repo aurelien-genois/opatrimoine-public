@@ -118,6 +118,8 @@
                   {{selectedEvent.duration}}</p>
                 <p>{{selectedEvent.thematics}}</p>
                 <p>Nombre total de places : {{selectedEvent.totalPersons}}</p>
+                <p>Nombre total de réservations : {{selectedEvent.totalReservations}}</p>
+                <p>Nombre de places disponibles : {{selectedEvent.nbPlacesAvailable}} /  {{selectedEvent.totalPersons}}</p>
               </v-card-text>
 
               <!-- TODO action = s'inscrire !conditions -->
@@ -180,6 +182,8 @@
             duration: dataObj.duration,
             thematics: dataObj.thematics.join(', '),
             totalPersons: dataObj.totalpersons,
+            totalReservations: dataObj.totalreservations,
+            nbPlacesAvailable: dataObj.totalpersons - dataObj.totalreservations,
           }
         )
       });

@@ -107,7 +107,6 @@ function getGuidedToursByPlaceId($placeId) {
         }
         $guidedTour->thematics = $thematicsNames;
 
-        // todo add nb_of_place reserved
     }
 
     return $guidedTours;
