@@ -87,6 +87,8 @@ class Plugin
 
         $this->registrationManager = new Registration();
         
+        // STEP ROUTER instanciation du router
+        $this->router = new WPRouterConfiguration();
         
         add_action(
             'init',

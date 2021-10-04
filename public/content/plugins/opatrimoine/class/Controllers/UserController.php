@@ -18,17 +18,12 @@ class UserController extends CoreController
 
 
         // STEP MODEL use of a custom table in the controller
-        // $model = new ProjectDeveloperModel();
-        // $projects = $model->getProjectsByDeveloperId($userProfile->ID);
-
 
 
         // STEP MVC send variables to the view
-        // return $this->show('views/user/index.view', [
-        //     'user' => $user,
-        //     'userProfile' => $userProfile,
-        //     'projects' => $projects,
-        // ]);
+        return $this->show('views/dashboard.view', [
+            'user' => $user,
+        ]);
     }
 
 
