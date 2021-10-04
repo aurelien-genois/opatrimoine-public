@@ -46,11 +46,11 @@ class WPRouterConfiguration
             'top'
         );
 
-        // add_rewrite_rule(
-        //     'test/.+',
-        //     'index.php?test=true',
-        //     'top'
-        // );
+        add_rewrite_rule(
+            'test/.+',
+            'index.php?test=true',
+            'top'
+        );
 
 
         // STEP ROUTER wp routing rule cache refresh
@@ -62,9 +62,9 @@ class WPRouterConfiguration
         add_filter('query_vars', function($query_vars) {
             // STEP ROUTER Wordpress must monitor the "virtual" variable myCustomGetVariable
             $query_vars[] = 'myCustomGetVariable';
-            $query_vars[] = 'phpinfo';
+            // $query_vars[] = 'phpinfo';
             $query_vars[] = 'opatrimoine';
-            // $query_vars[] = 'test';
+            $query_vars[] = 'test';
             return $query_vars;
         });
 
@@ -83,10 +83,10 @@ class WPRouterConfiguration
                return __DIR__ .'/../custom-routes-execute.php';
             }
 
-            $phpinfo = get_query_var('phpinfo');
-            if($phpinfo) {
-                return __DIR__ .'/../phpinfo.php';
-             }
+            // $phpinfo = get_query_var('phpinfo');
+            // if($phpinfo) {
+            //     return __DIR__ .'/../phpinfo.php';
+            //  }
 
             $opatrimoine = get_query_var('opatrimoine');
             if($opatrimoine) {

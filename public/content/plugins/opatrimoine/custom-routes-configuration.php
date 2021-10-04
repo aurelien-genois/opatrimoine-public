@@ -1,5 +1,6 @@
 <?php
 
+use OPatrimoine\Controllers\Test\ReservationsController;
 use OPatrimoine\Controllers\UserController;
 
 global $router;
@@ -84,15 +85,15 @@ $router->map(
 
 // STEP MODELS Model layer test routes
 
-// $router->map(
-//     'GET',
-//     '/test/project-developer/create-table/',
-//     function() {
-//        $controller = new ProjectDeveloperController();
-//        $controller->createTable();
-//     },
-//     'test-project-developer-create-table'
-// );
+$router->map(
+    'GET',
+    '/test/reservations/create-table/',
+    function() {
+       $controller = new ReservationsController();
+       $controller->createTable();
+    },
+    'test-reservations-create-table'
+);
 
 // $router->map(
 //     'GET',
