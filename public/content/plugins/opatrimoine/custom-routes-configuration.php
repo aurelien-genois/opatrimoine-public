@@ -95,15 +95,15 @@ $router->map(
     'test-reservations-create-table'
 );
 
-// $router->map(
-//     'GET',
-//     '/test/project-developer/insert/',
-//     function() {
-//        $controller = new ProjectDeveloperController();
-//        $controller->insert();
-//     },
-//     'test-project-developer-insert'
-// );
+$router->map(
+    'GET',
+    '/test/reservations/insert/',
+    function() {
+       $controller = new ReservationsController();
+       $controller->insert();
+    },
+    'test-reservations-insert'
+);
 
 
 // BONUS ALTOROUTER route with variable part

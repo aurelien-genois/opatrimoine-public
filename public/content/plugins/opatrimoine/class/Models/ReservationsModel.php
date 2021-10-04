@@ -2,8 +2,6 @@
 
 namespace OPatrimoine\Models;
 
-use DateTime;
-use WP_User;
 
 class ReservationsModel extends CoreModel {
     
@@ -31,5 +29,17 @@ class ReservationsModel extends CoreModel {
         dbDelta($sql);
     }
 
-
+    public function insert($guidedTourId, $memberId, $nbPlaces)
+    {
+        $data = [
+            'guided_tour_id' => $guidedTourId,
+            'member_id' => $memberId,
+            'nb_of_reservations' => $nbPlaces,
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+        $this->database->insert(
+            $this->getTableName(),
+            $data
+        );
+    }
 }
