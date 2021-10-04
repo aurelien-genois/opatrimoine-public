@@ -117,6 +117,7 @@
                   <v-icon>mdi-timer-outline</v-icon>
                   {{selectedEvent.duration}}</p>
                 <p>{{selectedEvent.thematics}}</p>
+                <p>Nombre total de places : {{selectedEvent.totalPersons}}</p>
               </v-card-text>
 
               <!-- TODO action = s'inscrire !conditions -->
@@ -168,8 +169,6 @@
 
         const startMin = (String(start.getMinutes()).length < 2) ? '0' + start.getMinutes() : start.getMinutes();
         const startHour = start.getHours() + 'h' + startMin;
-
-        console.log(dataObj.thematics);
         
         this.events.push( {
             name: dataObj.post_title,
@@ -180,6 +179,7 @@
             hour: startHour,
             duration: dataObj.duration,
             thematics: dataObj.thematics.join(', '),
+            totalPersons: dataObj.totalpersons,
           }
         )
       });
