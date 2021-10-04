@@ -65,6 +65,9 @@ class CustomPostType
             if(!array_key_exists('type', $data)) {
                 $data['type'] = 'text';
             }
+            if(!array_key_exists('readonly', $data)) {
+                $data['readonly'] = 0;
+            }
 
             if($data['type'] == 'post_object') {
                 $fieldsDescriptors[] = $this->getFieldDescriptor(
@@ -96,6 +99,12 @@ class CustomPostType
                     $data['label'],
                     $data['name'],
                     $data['type'],
+                    'no',
+                    'no',
+                    '',
+                    '',
+                    '',
+                    $data['readonly'],
                 );
             }
         }
@@ -128,7 +137,7 @@ class CustomPostType
         }
     }
 
-    protected function getFieldDescriptor($fieldKey, $fieldLabel, $fieldName, $fieldType = 'text', $fieldAllowNull = 'no', $fieldMultiple = 'no', $fieldReturnFormat = '', $fieldPostType = '', $fieldDisplayFormat = '')
+    protected function getFieldDescriptor($fieldKey, $fieldLabel, $fieldName, $fieldType = 'text', $fieldAllowNull = 'no', $fieldMultiple = 'no', $fieldReturnFormat = '', $fieldPostType = '', $fieldDisplayFormat = '', $fieldReadOnly = 0)
     {
         return [
             'key' => $fieldKey,
@@ -149,7 +158,7 @@ class CustomPostType
             'prepend' => '',
             'append' => '',
             'maxlength' => '',
-            'readonly' => 0,
+            'readonly' => $fieldReadOnly,
             'disabled' => 0,
             // Additionnal keys for post_object field
             'allow_null' => $fieldAllowNull, 

@@ -48,6 +48,7 @@ class Plugin
                 ['key' => 'date', 'label' => 'Jour de la visite', 'name' => 'date', 'type' => 'date_time_picker', 'display_format' => 'd/m/Y H:i', 'return_format' => 'Y-m-d H:i'],
                 ['key' => 'duration', 'label' => 'Duréé estimée', 'name' => 'duration', 'type' => 'text'],
                 ['key' => 'totalpersons', 'label' => 'Nombre de personnes totale', 'name' => 'totalpersons', 'type' => 'number'],
+                ['key' => 'totalreservations', 'label' => 'Nombre de réservations', 'name' => 'totalreservations', 'type' => 'number', 'readonly' => 1],
                 // Relationship field to links a guided-tour to a specific place
                 ['key' => 'placeoftour', 'label' => 'Lieux de la visite', 'name' => 'placeoftour', 'type' => 'post_object', 'allow_null' => 'no', 'multiple' => 0, 'return_format' => 'object', 'post_type' => 'place'],
             ],
@@ -197,6 +198,7 @@ class Plugin
                 update_field('date', $guidedTour['acf-date'], $postId);
                 update_field('duration', $guidedTour['acf-duration'], $postId);
                 update_field('totalpersons', $guidedTour['acf-totalpersons'], $postId);
+                update_field('totalreservations', $guidedTour['acf-totalreservations'], $postId);
                 update_field('placeoftour', $guidedTour['acf-placeoftour'], $postId);
             };
         }
