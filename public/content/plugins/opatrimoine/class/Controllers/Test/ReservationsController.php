@@ -30,4 +30,12 @@ class ReservationsController extends CoreController {
         echo "<h1>Test de suppression dans la table opatrimoine_reservations via guided_tour_id et member_id</h1>";
         $this->model->deleteByTourIdAndMemberId($guidedTourId, $memberId);
     }
+    
+    public function getGuidedToursByMemberId($memberId)
+    {
+        echo "<h1>Test de sélection des visites dans la table opatrimoine_reservations via member_id</h1>";
+
+        $results = $this->model->getGuidedToursByMemberId($memberId);
+        dd($results);
+    }
 }

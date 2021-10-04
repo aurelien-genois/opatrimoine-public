@@ -93,7 +93,7 @@ function getGuidedToursByPlaceId($placeId) {
     foreach($guidedTours as $guidedTour) {
         $fields = get_fields($guidedTour->ID);
         foreach($fields as $key => $value) {
-            // placeoftour is already used above, adding it to the guided-tour post object loads the entire post object of the current place post (not only the ID) which is not necessary
+            // acf relational-field placeoftour is already used above, adding it to the guided-tour post object loads the entire post object of the current place post (not only the ID) which is not necessary
             if($key !== "placeoftour") {
                 $guidedTour->{$key} = $value;
             }
@@ -106,6 +106,8 @@ function getGuidedToursByPlaceId($placeId) {
             $thematicsNames[] = $thematic->name;
         }
         $guidedTour->thematics = $thematicsNames;
+
+        // todo add nb_of_place reserved
     }
 
     return $guidedTours;

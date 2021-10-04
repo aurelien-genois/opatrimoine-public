@@ -149,14 +149,14 @@ $router->map(
 //     'test-project-developer-find-all'
 // );
 
-// $router->map(
-//     'GET',
-//     '/test/project-developer/get-developers-by-project-id/[i:projectId]/',
-//     function($projectId) {
-//        $controller = new ProjectDeveloperController();
-//        $controller->getDevelopersByProjectId($projectId);
-//     },
-//     'test-project-developer-get-developers-by-project-id'
-// );
+$router->map(
+    'GET',
+    '/test/reservations/get-guided-tours-by-member-id/[i:memberId]/',
+    function($memberId) {
+       $controller = new ReservationsController();
+       $controller->getGuidedToursByMemberId($memberId);
+    },
+    'test-reservations-get-guided-tours-by-member-id'
+);
 
 

@@ -19,4 +19,17 @@ abstract class CoreModel {
         return $this->database->prefix . $this->_getTableName();
     }
 
+    public function executeQuery($sql, $parameters = [])
+    {
+        if(empty($parameters)) {
+            return $this->database->get_results($sql);
+        }
+        else {
+            $preparedStatement = $this->database->prepare(
+                $sql,
+                $parameters,
+            );
+            return $this->database->get_results($preparedStatement);
+        }
+    }
 }
