@@ -17,6 +17,13 @@ class Plugin
      * @var OPatrimoine\ACL
      */
     protected $acl;
+
+    /**
+     * Cette propriété nous permet de gérer tous les traitement concernant l'inscription
+     *
+     * @var OPatrimoine\Registration
+     */
+    protected $registrationManager;
     
     
     // cpt definitions
@@ -77,7 +84,11 @@ class Plugin
     {
       
         $this->acl = new ACL();
+
+        $this->registrationManager = new Registration();
         
+        // STEP ROUTER instanciation du router
+        $this->router = new WPRouterConfiguration();
         
         add_action(
             'init',

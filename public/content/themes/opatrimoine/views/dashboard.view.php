@@ -1,0 +1,1 @@
+<h1>Dashboard, hello <?= wp_get_current_user()->display_name ?></h1>

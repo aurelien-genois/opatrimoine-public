@@ -1,3 +1,9 @@
+<?php
+    global $router;
+    $registration_redirect = $router->generate(
+        'user-index'
+    );
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -45,8 +51,9 @@
                
             </div>
 
-        <a class="button" href="<?= get_home_url(); ?>/connexion">Connexion</a>
+        <a class="button" href="<?= wp_login_url($registration_redirect); ?>">Connexion</a>
+        
         <a class="button" href="<?= wp_registration_url(); ?>">S'inscrire</a>
-    
-    
+        
+
 </header>

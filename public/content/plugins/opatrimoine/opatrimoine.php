@@ -8,6 +8,7 @@
  use OPatrimoine\Plugin;
 
  require __DIR__ . '/vendor-opatrimoine/autoload.php';
+ require __DIR__ . '/custom-routes-configuration.php';
 
  $plugin = new Plugin();
 
