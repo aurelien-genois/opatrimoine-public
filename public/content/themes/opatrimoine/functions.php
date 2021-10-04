@@ -12,7 +12,8 @@ function on_customer_login( $user_login, WP_User $user ) {
     if ( !current_user_can( 'customer' )  ) {
         return;
     }
-    wp_redirect('TonUrlDuBackOffice');
+    // NTH use the rooter (doesn't succeed to make it work)
+    wp_redirect(home_url('/user/'));
     exit;
 }
 

@@ -39,7 +39,8 @@ class Registration
         // STEP SIGNUP Redirection après inscription
         // TODO à la fin de l'inscription l'utilisateur est redirigé vers la home page du site. Il faudrait le rediriger vers une page "custom"
         add_filter('registration_redirect', function($registration_redirect) {
-            $registration_redirect = home_url();
+            // NTH use the rooter (doesn't succeed to make it work)
+            $registration_redirect = home_url('/user/');
             return $registration_redirect;
         });
     }
@@ -195,29 +196,11 @@ class Registration
         $password = filter_input(INPUT_POST, 'user_password');
         wp_set_password($password, $userId);
 
-        // STEP SIGNUP création du profil pour le member
-        // si l'utilisateur est de type member
-        if($role == 'member') {
-            wp_insert_post([
-                'post_author' => $userId,
-
-                // par défaut wordpress crée les contenu en status "brouillon", nous voulons que le profil utilisateur soit en status "publié"
-                'post_status' => 'publish',
-                "post_title" => 'Profil de : ' . $user->data->display_name,
-
-                // Ne pas oublier de spécifier le type de post que nous souhaitons créer
-                'post_type' => 'member-profile'
-            ]);
-        }
-
-
-        // elseif($role=='customer') {
-        //     wp_insert_post([
-        //         'post_author' => $userId,
-        //         'post_status' => 'publish',
-        //         "post_title" => 'Profil de : ' . $user->data->display_name,
-        //         'post_type' => 'customer'
-        //     ]);
-        // }
+        // auto-log the user after registration
+        wp_signon( [
+            'user_login' => $user->display_name,
+            'user_password' => $password,
+            'remember' => false,
+        ], false );
     }
 }
