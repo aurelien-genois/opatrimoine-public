@@ -109,6 +109,25 @@ function getGuidedToursByPlaceId($placeId) {
         }
         $guidedTour->thematics = $thematicsNames;
 
+
+        // add variable to know if the current user is a member to the guidedTour object
+        $user = wp_get_current_user();
+        if(!in_array('member', $user->roles)) {
+            $guidedTour->isMember = true;
+        } else {
+            $guidedTour->isMember = false;
+        }
+
+        // add register reservation route to the guidedTour object
+        global $router;
+        $registerReservationUrl = $router->generate(
+            'user-register-reservations-to-guided-tour',
+            [
+                'guidedTourId' => $guidedTour->ID,
+                'memberId' => $user->ID,
+            ],
+        );
+        $guidedTour->reservationUrl = $registerReservationUrl;
     }
 
     return $guidedTours;

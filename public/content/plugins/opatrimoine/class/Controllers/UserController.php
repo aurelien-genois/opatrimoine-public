@@ -36,6 +36,8 @@ class UserController extends CoreController
 
     public function registerReservationsToGuidedTour($guidedTourId, $memberId, $nbOfReservations)
     {
+        $redirection = '';
+
         $this->mustBeConnected();
 
         if($memberId === null) {
@@ -47,6 +49,8 @@ class UserController extends CoreController
 
         $guidedTour = get_post($guidedTourId);
         if($guidedTour && $guidedTour->post_type === "guided-tour") {
+            $redirection = get_the_permalink($guidedTour->placeoftour);
+            
             // acf function get_field() isn't necessary to get a custom field => WP automatically check for custom field
             $maxPersons = $guidedTour->totalpersons;
             $currentNbReservations = $guidedTour->totalreservations;
@@ -67,6 +71,7 @@ class UserController extends CoreController
                 }
             }
         }
+        dd(wp_redirect($redirection));
     }
 
 

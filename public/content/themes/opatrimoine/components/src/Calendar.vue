@@ -122,12 +122,20 @@
                 <p>Nombre de places disponibles : {{selectedEvent.nbPlacesAvailable}} /  {{selectedEvent.totalPersons}}</p>
               </v-card-text>
 
-              <!-- TODO action = s'inscrire !conditions -->
+              <!-- TODO ajouter les conditions pour l'affichage des boutons (
+                si visite complète (selectedEvent.nbPlacesAvailable = 0), 
+                si user non "membre" (dataObj.isMember = false), 
+                si déjà inscrit ....) -->
+              <!-- NTH afficher des messages si nombres de places incorrect -->
               <v-card-actions>
+                <select v-model="selectedNumber">
+                  <option v-for="index in selectedEvent.nbPlacesAvailable" :key="index" :value="index">{{index}}</option>
+                </select>
+                <p>place(s)</p>
                 <v-btn
                   text
                   color="secondary"
-                  @click="selectedOpen = false"
+                  @click="reservePlaces"
                 >
                   S'inscrire à la visite
                 </v-btn>
@@ -157,6 +165,7 @@
       selectedElement: null,
       selectedOpen: false,
       events: [],
+      selectedNumber: 1,
     }),
     mounted() {
       const calendarDatas = this.$wordpressData['tours-calendar'];
@@ -184,6 +193,7 @@
             totalPersons: dataObj.totalpersons,
             totalReservations: dataObj.totalreservations,
             nbPlacesAvailable: dataObj.totalpersons - dataObj.totalreservations,
+            reservationUrl: dataObj.reservationUrl,
           }
         )
       });
@@ -222,6 +232,14 @@
 
         nativeEvent.stopPropagation()
       },
+      reservePlaces () {
+        // remove the excess "/"
+        const cleanUrl = this.selectedEvent.reservationUrl.slice(0,-1);
+
+        if (!isNaN(this.selectedNumber) && this.selectedNumber <= this.selectedEvent.nbPlacesAvailable && this.selectedNumber > 0) {
+          location.href = cleanUrl + this.selectedNumber + "/";
+        }
+      }
     },
   }
 </script>
