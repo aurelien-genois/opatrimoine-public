@@ -2,6 +2,7 @@
 
 namespace OPatrimoine\Models;
 
+use WP_User;
 
 class ReservationsModel extends CoreModel {
     
@@ -124,5 +125,55 @@ class ReservationsModel extends CoreModel {
         }
         
         return $guidedTours;
+    }
+
+    public function getReservationByGuidedTourIdAndMemberId($guidedTourId, $memberId)
+    {
+        $sql = "
+            SELECT * FROM " . $this->getTableName() . "
+            WHERE 
+                guided_tour_id = %d
+                AND
+                member_id = %d
+        ";
+
+        $results = $this->executeQuery(
+            $sql,
+            [
+                $guidedTourId,
+                $memberId,
+            ],
+        );
+
+        $idList = [];
+        foreach($results as $reservationsResult) {
+            $idList[] = $reservationsResult->id;
+        }
+
+        if(!empty($idList)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function canReserve($guidedTourId, WP_User $user)
+    {
+        $roles = $user->roles;
+        if(!in_array('member', $roles)) {
+            $canReserve = false;
+        } 
+        else {
+            $canReserve = false;
+            // if member already reserved on this guided-tour, cannot make another reservation
+            if($this->getReservationByGuidedTourIdAndMemberId($guidedTourId, $user->ID)) {
+                $canReserve = false;
+            }
+            else {
+                $canReserve = true;
+            }
+        }
+        return $canReserve;
     }
 }

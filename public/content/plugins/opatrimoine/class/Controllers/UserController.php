@@ -2,10 +2,18 @@
 
 namespace OPatrimoine\Controllers;
 
-
+use OPatrimoine\Models\ReservationsModel;
+use WP_User;
 
 class UserController extends CoreController
 {
+    public $reservationModel;
+
+    public function __construct()
+    {
+        $this->reservationModel = new ReservationsModel();    
+    }
+
     public function index()
     {
 
@@ -26,52 +34,41 @@ class UserController extends CoreController
         ]);
     }
 
+    public function registerReservationsToGuidedTour($guidedTourId, $memberId, $nbOfReservations)
+    {
+        $this->mustBeConnected();
 
+        if($memberId === null) {
+            $user = wp_get_current_user();
+        }
+        else {
+            $user = new WP_User(($memberId));
+        }
 
-    // public function confirmDelete()
-    // {
-    //     $this->mustBeConnected();
-        // before deleting the user, we make sure that the visitor is logged in
-    //     if(!$this->mustBeConnected()) {
-            // if the user is not logged in, we make a return to make sure that no further processing is performed
-    //         return;
-    //     }
+        $guidedTour = get_post($guidedTourId);
+        if($guidedTour && $guidedTour->post_type === "guided-tour") {
+            // acf function get_field() isn't necessary to get a custom field => WP automatically check for custom field
+            $maxPersons = $guidedTour->totalpersons;
+            $currentNbReservations = $guidedTour->totalreservations;
+            $availableReservations = $maxPersons - $currentNbReservations;
 
-        // We prohibit deleting an account if you are an administrator; this in order to prevent any mishandling
-    //     if($this->isAdmin()) {
-    //         echo 'Vous ne pouvez pas supprimer votre compte car vous êtes administrateur';
-    //         exit();
-    //     }
+            if(is_int(+$nbOfReservations) &&
+            $nbOfReservations <= $availableReservations && 
+            $nbOfReservations > 0) {
+                
+                if($this->reservationModel->canReserve($guidedTourId, $user)) {
 
-    //     return $this->show('views/user/confirm-delete.view');
-    // }
+                    // insert reservation in the custom-table
+                    $this->reservationModel->insert($guidedTourId, $memberId, $nbOfReservations);
 
+                    // increment totalreservations
+                    $newNbReservations = $currentNbReservations + $nbOfReservations;
+                    update_field('totalreservations', $newNbReservations, $guidedTourId);
+                }
+            }
+        }
+    }
 
-    // public function delete()
-    // {
-    //     $this->mustBeConnected();
-
-    //     if(!$this->mustBeConnected()) {
-    //         return;
-    //     }
-
-    //     if($this->isAdmin()) {
-    //         echo 'Vous ne pouvez pas supprimer votre compte car vous êtes administrateur';
-    //         exit();
-    //     }
-
-        // user recovery
-    //     $user = wp_get_current_user();
-        // user deletion
-    //     require_once ABSPATH . '/wp-admin/includes/user.php';
-
-    //     wp_delete_user($user->ID);
-
-        // redirect the user to the home page once their account is registered
-    //     wp_redirect(
-    //         get_home_url()
-    //     );
-    // }
 
 
 

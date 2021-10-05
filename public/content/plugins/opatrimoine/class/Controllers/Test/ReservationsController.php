@@ -38,4 +38,12 @@ class ReservationsController extends CoreController {
         $results = $this->model->getGuidedToursByMemberId($memberId);
         dd($results);
     }
+    
+    public function getReservationByGuidedTourIdAndMemberId($guidedTourId, $memberId)
+    {
+        echo "<h1>Test de sélection de réservations dans la table opatrimoine_reservations via guided_tour_id et member_id</h1>";
+        
+        $results = $this->model->getReservationByGuidedTourIdAndMemberId($guidedTourId, $memberId);
+        dd($results);
+    }
 }

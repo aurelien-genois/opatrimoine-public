@@ -70,16 +70,16 @@ $router->map(
 // =======================================================================
 // We configure our custom routes at the same time as we initialize the plugin. So whatever the requested page (custom or wp hierarchy), the router is available
 
-// $router->map(
-//     'GET',
-//     '/user/add-to-project/[i:projectId]/[i:userId]/',
-//     function($projectId, $userId) {
-//        $controller = new UserController();
-//        $controller->addToProject($projectId, $userId);
-//     },
-//     'user-add-to-project'
-// );
-// =======================================================================
+$router->map(
+    'GET',
+    '/user/register-reservations-to-guided-tour/[i:guidedTourId]/[i:memberId]/[i:nbOfReservations]/',
+    function($guidedTourId, $memberId, $nbOfReservations) {
+       $controller = new UserController();
+       $controller->registerReservationsToGuidedTour($guidedTourId, $memberId, $nbOfReservations);
+    },
+    'user-register-reservations-to-guided-tour'
+);
+//=======================================================================
 
 
 
@@ -157,6 +157,16 @@ $router->map(
        $controller->getGuidedToursByMemberId($memberId);
     },
     'test-reservations-get-guided-tours-by-member-id'
+);
+
+$router->map(
+    'GET',
+    '/test/reservations/get-reservation-by-guided-tour-id-and-member-id/[i:guidedTourId]/[i:memberId]/',
+    function($guidedTourId, $memberId) {
+       $controller = new ReservationsController();
+       $controller->getReservationByGuidedTourIdAndMemberId($guidedTourId, $memberId);
+    },
+    'test-reservations-get-reservation-by-guided-tour-id-and-member-id'
 );
 
 
