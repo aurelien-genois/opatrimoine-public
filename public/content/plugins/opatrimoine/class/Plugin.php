@@ -6,6 +6,7 @@ use OPatrimoine\defaultDatas\GuidedToursDatas;
 use OPatrimoine\defaultDatas\PlacesDatas;
 use OPatrimoine\defaultDatas\PlaceTypesDatas;
 use OPatrimoine\defaultDatas\TourThematicsDatas;
+use OPatrimoine\Models\ReservationsModel;
 use WP_Http;
 
 class Plugin
@@ -301,7 +302,9 @@ class Plugin
         // STEP ACL création des rôles
         $this->acl->createCustomerRole();
         $this->acl->createMemberRole();
-    
+
+        $ReservationsModel = new ReservationsModel();
+        $ReservationsModel->createTable();
     }
 
     public function deactivate()
