@@ -65,6 +65,10 @@ class ReservationsModel extends CoreModel {
                 member_id = %d
         ";
 
+        if($memberId === 0) {
+            return;
+        }
+
         $results = $this->executeQuery(
             $sql,
             [
@@ -121,7 +125,22 @@ class ReservationsModel extends CoreModel {
             $guidedTour->thematics = $thematicsNames;
 
             // add nb_of_reservations from this member to the guidedTour object
-            $guidedTour->current_member_reservations = $numbersOfReservationsByGuidedToursId[$guidedTour->ID];
+            $guidedTour->currentMemberReservations = $numbersOfReservationsByGuidedToursId[$guidedTour->ID];
+
+            $user = wp_get_current_user();
+
+            $guidedTour->canReserve = $this->canReserve($guidedTour->ID, $user);
+
+            // add cancel reservation route to the guidedTour object
+            global $router;
+            $cancelReservationUrl = $router->generate(
+                'user-reservations-delete-by-guided-tour-id-and-member-id',
+                [
+                    'guidedTourId' => $guidedTour->ID,
+                    'memberId' => $user->ID,
+                ],
+            );
+            $guidedTour->cancelReservationUrl = $cancelReservationUrl;
         }
         
         return $guidedTours;

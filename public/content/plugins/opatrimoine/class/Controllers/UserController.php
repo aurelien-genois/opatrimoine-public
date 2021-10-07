@@ -24,6 +24,8 @@ class UserController extends CoreController
         // IMPORTANT WP wp_get_current_user Retrieving the logged in user (WP_User type object)
         $user = wp_get_current_user();
 
+        $registeredGuidedTours = $this->reservationModel->getGuidedToursByMemberId($user->ID);
+
 
         // STEP MODEL use of a custom table in the controller
 
@@ -31,6 +33,7 @@ class UserController extends CoreController
         // STEP MVC send variables to the view
         return $this->show('views/dashboard.view', [
             'user' => $user,
+            'guidedTours' => $registeredGuidedTours,
         ]);
     }
 
