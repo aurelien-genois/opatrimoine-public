@@ -165,16 +165,21 @@
       selectedElement: null,
       selectedOpen: false,
       events: [],
-      selectedNumber: 1,
+      selectedNumberPlaces: 1,
+      isMember: false,
+      loginUrl: String,
     }),
     mounted() {
       const calendarDatas = this.$wordpressData['tours-calendar'];
 
-      calendarDatas.forEach(dataObj => {
+      this.isMember = calendarDatas.user.roles.includes('member')
+      this.loginUrl = calendarDatas.loginUrl;
 
-        const start = new Date(dataObj.date);
+      calendarDatas.guidedTours.forEach(guidedTour => {
+
+        const start = new Date(guidedTour.date);
         const end = new Date(start.valueOf());
-        const durationArr = dataObj.duration.split(':')
+        const durationArr = guidedTour.duration.split(':')
         end.setHours(start.getHours() + Number(durationArr[0])); 
         end.setUTCMinutes(start.getUTCMinutes() + durationArr[1]); 
 
@@ -182,18 +187,21 @@
         const startHour = start.getHours() + 'h' + startMin;
         
         this.events.push( {
-            name: dataObj.post_title,
+            name: guidedTour.post_title,
             start: start,
             end: end,
             color: 'blue',
             timed: true,
             hour: startHour,
-            duration: dataObj.duration,
-            thematics: dataObj.thematics.join(', '),
-            totalPersons: dataObj.totalpersons,
-            totalReservations: dataObj.totalreservations,
-            nbPlacesAvailable: dataObj.totalpersons - dataObj.totalreservations,
-            reservationUrl: dataObj.reservationUrl,
+            duration: guidedTour.duration,
+            thematics: guidedTour.thematics.join(', '),
+            totalPersons: guidedTour.totalpersons,
+            totalReservations: guidedTour.totalreservations,
+            nbPlacesAvailable: guidedTour.totalpersons - guidedTour.totalreservations,
+            reservationUrl: guidedTour.reservationUrl || 'reservation not allowed on this page',
+            cancelReservationUrl: guidedTour.cancelReservationUrl,
+            memberCanReserve: guidedTour.canReserve,
+            currentMemberReservations: guidedTour.currentMemberReservations || null,
           }
         )
       });
@@ -221,6 +229,7 @@
           this.selectedEvent = event
           this.selectedElement = nativeEvent.target
           requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
+          this.selectedNumberPlaces = 1;
         }
 
         if (this.selectedOpen) {
@@ -236,10 +245,13 @@
         // remove the excess "/"
         const cleanUrl = this.selectedEvent.reservationUrl.slice(0,-1);
 
-        if (!isNaN(this.selectedNumber) && this.selectedNumber <= this.selectedEvent.nbPlacesAvailable && this.selectedNumber > 0) {
-          location.href = cleanUrl + this.selectedNumber + "/";
+        if (!isNaN(this.selectedNumberPlaces) && this.selectedNumberPlaces <= this.selectedEvent.nbPlacesAvailable && this.selectedNumberPlaces > 0) {
+          location.href = cleanUrl + this.selectedNumberPlaces + "/";
         }
-      }
+      },
+      cancelReservation () {
+        location.href = this.selectedEvent.cancelReservationUrl;
+      },
     },
   }
 </script>
