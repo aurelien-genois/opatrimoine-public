@@ -114,6 +114,10 @@
               </v-toolbar>
               <v-card-text>
                 <p>
+                  <span v-if="selectedEvent.placeName">{{selectedEvent.placeName}} - </span>
+                  <span v-if="selectedEvent.placeCity">{{selectedEvent.placeCity}}</span>
+                </p>
+                <p>
                   <v-icon>mdi-timer-outline</v-icon>
                   {{selectedEvent.duration}}</p>
                 <p>{{selectedEvent.thematics}}</p>
@@ -122,24 +126,31 @@
                 <p>Nombre de places disponibles : {{selectedEvent.nbPlacesAvailable}} /  {{selectedEvent.totalPersons}}</p>
               </v-card-text>
 
-              <!-- TODO ajouter les conditions pour l'affichage des boutons (
-                si visite complète (selectedEvent.nbPlacesAvailable = 0), 
-                si user non "membre" (dataObj.isMember = false), 
-                si déjà inscrit ....) -->
               <!-- NTH afficher des messages si nombres de places incorrect -->
-              <v-card-actions>
-                <select v-model="selectedNumber">
+              <v-card-actions v-if="selectedEvent.nbPlacesAvailable && selectedEvent.memberCanReserve" >
+                <select v-model="selectedNumberPlaces">
                   <option v-for="index in selectedEvent.nbPlacesAvailable" :key="index" :value="index">{{index}}</option>
                 </select>
                 <p>place(s)</p>
-                <v-btn
-                  text
-                  color="secondary"
-                  @click="reservePlaces"
+                <v-btn text color="secondary" @click="reservePlaces"
                 >
-                  S'inscrire à la visite
+                  Réserver
                 </v-btn>
               </v-card-actions>
+
+              <v-card-text v-if="selectedEvent.currentMemberReservations">{{selectedEvent.currentMemberReservations}} places réservées</v-card-text>
+
+              <v-card-actions v-if="isMember && !selectedEvent.memberCanReserve">
+                <v-btn text color="secondary" @click="cancelReservation">Annuler ma réservation</v-btn>
+              </v-card-actions>
+
+              <v-card-actions v-if="!isMember">
+                <a :href="loginUrl">Connectez-vous</a>
+              </v-card-actions>
+
+              <p v-if="!selectedEvent.nbPlacesAvailable">
+                La visite est complète
+              </p>
             </v-card>
           </v-menu>
         </v-sheet>
@@ -201,6 +212,8 @@
             reservationUrl: guidedTour.reservationUrl || 'reservation not allowed on this page',
             cancelReservationUrl: guidedTour.cancelReservationUrl,
             memberCanReserve: guidedTour.canReserve,
+            placeName: (guidedTour.placeoftour) ? guidedTour.placeoftour.post_title : null,
+            placeCity: (guidedTour.placeoftour) ? guidedTour.placeoftour.city : null,
             currentMemberReservations: guidedTour.currentMemberReservations || null,
           }
         )
