@@ -75,8 +75,24 @@ class UserController extends CoreController
     }
 
 
+    public function deleteByTourIdAndMemberId($guidedTourId, $memberId)
+    {
+        $redirection = '';
 
+        $guidedTour = get_post($guidedTourId);
+        if($guidedTour && $guidedTour->post_type === "guided-tour") {
+            $redirection = get_the_permalink($guidedTour->placeoftour);
 
+            // decrement guidedTour
+            $currentReservation = $this->reservationModel->getReservationByGuidedTourIdAndMemberId($guidedTourId, $memberId);
+            $newNbReservations = $guidedTour->totalreservations - $currentReservation->nb_of_reservations;
+            update_field('totalreservations', $newNbReservations, $guidedTourId);
+
+            // delete reservation
+            $this->reservationModel->deleteByTourIdAndMemberId($guidedTourId, $memberId);
+        }
+        dd(wp_redirect($redirection));
+    }
 
     // BONUS ACF update user data
     public function update()

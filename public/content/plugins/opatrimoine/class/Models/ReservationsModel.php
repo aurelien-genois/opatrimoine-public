@@ -151,7 +151,7 @@ class ReservationsModel extends CoreModel {
         }
 
         if(!empty($idList)) {
-            return true;
+            return $results[0];
         }
         else {
             return false;
