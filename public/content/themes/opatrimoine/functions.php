@@ -9,11 +9,13 @@ add_action( 'wp_login', 'on_customer_login', 10, 2 );
 function on_customer_login( $user_login, WP_User $user ) {
  
     // do not send email if user has already logged in once
-    if ( !current_user_can( 'customer' )  ) {
-        return;
+    if (in_array('member', $user->roles)) {
+        // NTH use the rooter (doesn't succeed to make it work)
+        $redirection = home_url('/user/');
+    } else if (in_array('administrator', $user->roles) || in_array('customer', $user->roles)) {
+        $redirection = admin_url();
     }
-    // NTH use the rooter (doesn't succeed to make it work)
-    wp_redirect(home_url('/user/'));
+    wp_redirect($redirection);
     exit;
 }
 
@@ -22,7 +24,7 @@ function opatrimoine_initialize_theme() {
     add_theme_support('post-thumbnails');
     add_theme_support('menus');
     // hide admin bar on front if not a admin
-    if (!current_user_can('administrator') && !is_admin()) {
+    if (!current_user_can('administrator') && !is_admin() && !current_user_can('customer')) {
         show_admin_bar(false);
       }
 };

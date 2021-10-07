@@ -51,11 +51,13 @@
                
             </div>
 
-        <?php if (is_user_logged_in()): ?>
+        <?php if (is_user_logged_in() && current_user_can('member')): ?>
             <p>Bonjour <?= wp_get_current_user()->display_name ?></p>
             <a href="<?= $registration_redirect ?>">Mon dashboard</a>
+        <?php elseif (is_user_logged_in() && current_user_can('customer')): ?>
+            <p>Bonjour <?= wp_get_current_user()->display_name ?></p>
         <?php else: ?>
-            <a class="button" href="<?= wp_login_url($registration_redirect); ?>">Connexion</a>
+            <a class="button" href="<?= wp_login_url(); ?>">Connexion</a>
             
             <a class="button" href="<?= wp_registration_url(); ?>">S'inscrire</a>
         <?php endif ?>

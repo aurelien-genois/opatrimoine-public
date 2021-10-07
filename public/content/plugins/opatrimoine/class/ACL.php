@@ -27,6 +27,7 @@ class ACL
                 'view_admin_as' => true,
                 'view_admin_as_role_defaults' => true,
                 
+                'read' => true, // important to access to the wordpress dashboard (backoffice)
                 'delete_others_pages' => true,
                 'delete_pages' => true,
                 'delete_private_pages' => true,
