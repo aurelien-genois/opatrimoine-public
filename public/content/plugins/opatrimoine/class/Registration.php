@@ -174,10 +174,10 @@ class Registration
         wp_set_password($password, $userId);
 
         // auto-log the user after registration
-        // wp_signon( [
-        //     'user_login' => $user->display_name,
-        //     'user_password' => $password,
-        //     'remember' => false,
-        // ], false );
+        wp_signon( [
+            'user_login' => $user->display_name,
+            'user_password' => $password,
+            'remember' => false,
+        ], false );
     }
 }
