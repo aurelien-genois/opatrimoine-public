@@ -33,11 +33,12 @@
 
 <header>
 
-  
+
         <a href="<?= home_url('/') ?>" class="logo"> <img class="opatrimoine-logo" src="/spe-wp/opatrimoine/public/content/themes/opatrimoine/assets/image/opatrimoinelogo.png" alt="O'Patrimoine logo">
              <h4>O'Patrimoine</h4> 
         </a>
-     
+
+    <div class="topnav" id="myTopnav">
             <div class="menu">
                 <?php
                     wp_nav_menu([
@@ -51,9 +52,14 @@
                
             </div>
 
-        <a class="button" href="<?= wp_login_url($registration_redirect); ?>">Connexion</a>
+                <a class="button" href="<?= wp_login_url($registration_redirect); ?>">Connexion</a>
         
-        <a class="button" href="<?= wp_registration_url(); ?>">S'inscrire</a>
+                <a class="button" href="<?= wp_registration_url(); ?>">S'inscrire</a>
+                
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+                </a>
+    </div>
         
 
 </header>

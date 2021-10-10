@@ -49,15 +49,15 @@
       items: [
         {
           color: 'red lighten-2',
-          icon: 'mdi-star',
+          icon: 'mdi-Eye',
         },
         {
           color: 'purple darken-1',
-          icon: 'mdi-book-variant',
+          icon: 'mdi-account-plus',
         },
         {
           color: 'green lighten-1',
-          icon: 'mdi-airballoon',
+          icon: 'mdi-table-large-plus',
         },
         {
           color: 'indigo',
@@ -76,6 +76,8 @@
   padding-top: 30px;
 
   font-family: 'Antic Didone', serif;
+
+  background-color: var(--main-color);
 
 }
 

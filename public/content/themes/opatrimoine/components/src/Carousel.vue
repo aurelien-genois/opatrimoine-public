@@ -45,8 +45,7 @@
 
 #carousel {
 
- 
-  padding-top: 30px;
+  margin-top: 20px;
 
 
 
