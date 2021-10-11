@@ -26,7 +26,9 @@ function opatrimoine_initialize_theme() {
     // hide admin bar on front if not a admin
     if (!current_user_can('administrator') && !is_admin() && !current_user_can('customer')) {
         show_admin_bar(false);
-      }
+    }
+    update_option('blogname', 'O\'Patrimoine'); // define site title, not necessaty here because default is "OPatrimoine"
+    update_option('blogdescription', 'Des visites toutes les semaines'); // define site tagline
 };
 
 
