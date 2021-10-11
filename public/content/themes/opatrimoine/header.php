@@ -31,35 +31,45 @@
 
 
 
-<header>
+<header id="header">
+
+    <nav class="navbar">
+        
+        <div class="logo">
+            <a href="<?= home_url('/') ?>" class="logo"> <img class="opatrimoine-logo" src="/spe-wp/opatrimoine/public/content/themes/opatrimoine/assets/image/opatrimoinelogo.png" alt="O'Patrimoine logo">
+                <h4>O'Patrimoine</h4> 
+            </a>
+        </div>
 
 
-        <a href="<?= home_url('/') ?>" class="logo"> <img class="opatrimoine-logo" src="/spe-wp/opatrimoine/public/content/themes/opatrimoine/assets/image/opatrimoinelogo.png" alt="O'Patrimoine logo">
-             <h4>O'Patrimoine</h4> 
-        </a>
-
-    <div class="topnav" id="myTopnav">
-            <div class="menu">
+            <div class="nav-list">
                 <?php
                     wp_nav_menu([
                         'menu' => 'header_menu', 
-                        'container' => 'nav', 
+                        'container' => 'nav',
+                        'menu_class' => 'nav-menu',
                         'echo' => true,  
                     ]);
 
                     
                 ?>
                
-            </div>
-
+            
+            
+            <div class="buttons">
                 <a class="button" href="<?= wp_login_url($registration_redirect); ?>">Connexion</a>
         
                 <a class="button" href="<?= wp_registration_url(); ?>">S'inscrire</a>
                 
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-                </a>
-    </div>
+            </div>
+            </div>
+
+            <div class="burger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>   
+            </div>
+      
         
 
-</header>
+</nav>
