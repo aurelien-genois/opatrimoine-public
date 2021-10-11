@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Be+Vietnam+Pro:wght@200;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="<?= get_home_url() ?>/content/themes/opatrimoine/assets/image/opatrimoineicon.png" type="image/x-icon">
 
     <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script> 
     
