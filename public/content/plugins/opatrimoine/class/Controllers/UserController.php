@@ -78,13 +78,19 @@ class UserController extends CoreController
     }
 
 
-    public function deleteByTourIdAndMemberId($guidedTourId, $memberId)
+    public function deleteByTourIdAndMemberId($guidedTourId, $memberId, $currentLocation)
     {
-        $redirection = '';
+        global $router;
+        $redirection = get_home_url();
 
         $guidedTour = get_post($guidedTourId);
         if($guidedTour && $guidedTour->post_type === "guided-tour") {
-            $redirection = get_the_permalink($guidedTour->placeoftour);
+            
+            if ($currentLocation === 'dashboard') {
+                $redirection = $router->generate('user-index');
+            } else if ($currentLocation === 'singleplace') {
+                $redirection = get_the_permalink($guidedTour->placeoftour);
+            }
 
             // decrement guidedTour
             $currentReservation = $this->reservationModel->getReservationByGuidedTourIdAndMemberId($guidedTourId, $memberId);

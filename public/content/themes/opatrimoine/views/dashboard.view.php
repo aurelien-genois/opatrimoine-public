@@ -4,6 +4,7 @@ $dataVue = [
     'guidedTours' => $guidedTours,
     'user' => $user,
     'loginUrl' => wp_login_url(),
+    'isDashboard' => true,
 ];
 
 

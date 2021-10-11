@@ -6,6 +6,7 @@ $dataVue = [
     'guidedTours' => getGuidedToursByPlaceId(get_the_ID()),
     'user' => wp_get_current_user(),
     'loginUrl' => wp_login_url(),
+    'isDashboard' => false,
 ];
 ?>
 

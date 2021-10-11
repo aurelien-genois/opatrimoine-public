@@ -179,11 +179,13 @@
       selectedNumberPlaces: 1,
       isMember: false,
       loginUrl: String,
+      isDashboard: false,
     }),
     mounted() {
       const calendarDatas = this.$wordpressData['tours-calendar'];
+      this.isDashboard = calendarDatas.isDashboard;
 
-      this.isMember = calendarDatas.user.roles.includes('member')
+      this.isMember = calendarDatas.user.roles.includes('member');
       this.loginUrl = calendarDatas.loginUrl;
 
       calendarDatas.guidedTours.forEach(guidedTour => {
@@ -263,7 +265,12 @@
         }
       },
       cancelReservation () {
-        location.href = this.selectedEvent.cancelReservationUrl;
+        const cleanUrl = this.selectedEvent.cancelReservationUrl.slice(0,-1);
+        if(this.isDashboard) {
+          location.href = cleanUrl + "dashboard" + "/";
+        } else {
+          location.href = cleanUrl + "singleplace" + "/";
+        }
       },
     },
   }

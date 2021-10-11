@@ -81,10 +81,10 @@ $router->map(
 );
 $router->map(
     'GET',
-    '/user/delete-by-guided-tour-id-and-member-id/[i:guidedTourId]/[i:memberId]/',
-    function($guidedTourId, $memberId) {
+    '/user/delete-by-guided-tour-id-and-member-id/[i:guidedTourId]/[i:memberId]/[a:currentLocation]/',
+    function($guidedTourId, $memberId, $currentLocation) {
        $controller = new UserController();
-       $controller->deleteByTourIdAndMemberId($guidedTourId,$memberId);
+       $controller->deleteByTourIdAndMemberId($guidedTourId,$memberId, $currentLocation);
     },
     'user-reservations-delete-by-guided-tour-id-and-member-id'
 );
