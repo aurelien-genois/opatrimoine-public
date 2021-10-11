@@ -303,10 +303,12 @@ class Plugin
         $this->acl->createCustomerRole();
         $this->acl->createMemberRole();
 
+        $this->acl->setAdministratorCaps(); // add cpt capabilities to the administrator
+        
         $ReservationsModel = new ReservationsModel();
         $ReservationsModel->createTable();
     }
-
+    
     public function deactivate()
     {
         $this->deletePostsArchiveNavMenuItem('header_menu', 'Liste des lieux');
@@ -315,5 +317,6 @@ class Plugin
         $this->acl->deleteCustomerRole(); 
         $this->acl->deleteMemberRole();
         
+        $this->acl->removeAdministratorCaps(); // remove cpt capabilities to the administrator
     }
 }

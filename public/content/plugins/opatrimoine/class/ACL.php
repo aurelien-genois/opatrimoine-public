@@ -109,5 +109,56 @@ class ACL
         remove_role('member');
     }
 
+    public function setAdministratorCaps()
+    {
+        $role = get_role('administrator');
+        $role->add_cap('delete_guided-tours');
+        $role->add_cap('delete_others_guided-tours');
+        $role->add_cap('delete_private_guided-tours');
+        $role->add_cap('delete_published_guided-tours');
+        $role->add_cap('edit_guided-tours');
+        $role->add_cap('edit_others_guided-tours');
+        $role->add_cap('edit_private_guided-tours');
+        $role->add_cap('edit_published_guided-tours');
+        $role->add_cap('publish_guided-tours');
+        $role->add_cap('read_private_guided-tours');
 
+        $role->add_cap('delete_places');
+        $role->add_cap('delete_others_places');
+        $role->add_cap('delete_private_places');
+        $role->add_cap('delete_published_places');
+        $role->add_cap('edit_places');
+        $role->add_cap('edit_others_places');
+        $role->add_cap('edit_private_places');
+        $role->add_cap('edit_published_places');
+        $role->add_cap('publish_places');
+        $role->add_cap('read_private_places');
+    }
+    
+    public function removeAdministratorCaps()
+    {
+        $role = get_role('administrator');
+
+        $role->remove_cap('delete_guided-tours');
+        $role->remove_cap('delete_others_guided-tours');
+        $role->remove_cap('delete_private_guided-tours');
+        $role->remove_cap('delete_published_guided-tours');
+        $role->remove_cap('edit_guided-tours');
+        $role->remove_cap('edit_others_guided-tours');
+        $role->remove_cap('edit_private_guided-tours');
+        $role->remove_cap('edit_published_guided-tours');
+        $role->remove_cap('publish_guided-tours');
+        $role->remove_cap('read_private_guided-tours');
+
+        $role->remove_cap('delete_places');
+        $role->remove_cap('delete_others_places');
+        $role->remove_cap('delete_private_places');
+        $role->remove_cap('delete_published_places');
+        $role->remove_cap('edit_places');
+        $role->remove_cap('edit_others_places');
+        $role->remove_cap('edit_private_places');
+        $role->remove_cap('edit_published_places');
+        $role->remove_cap('publish_places');
+        $role->remove_cap('read_private_places');
+    }
 }
