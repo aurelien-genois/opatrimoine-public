@@ -181,13 +181,10 @@ p {
     flex-direction: row !important;
     justify-content: space-between !important;
     align-content: flex-start !important;
-    margin-top: 6em;
+    
 }
 
-.fab, .far {
-    margin-right: 10px;
-    font-weight: 400;
-}
+
 
 #menu-footer-menu {
     display: flex;

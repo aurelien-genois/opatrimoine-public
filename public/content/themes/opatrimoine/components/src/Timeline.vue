@@ -77,7 +77,7 @@
 
   font-family: 'Antic Didone', serif;
 
-  background-color: var(--main-color);
+
 
 }
 
