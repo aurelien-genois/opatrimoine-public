@@ -69,7 +69,5 @@
             <span class="bar"></span>
             <span class="bar"></span>   
             </div>
-      
-        
-
-</nav>
+    </nav>
+</header>
