@@ -91,6 +91,12 @@
     display: flex;
     flex-direction: column;
 }
+.place-thumbnail figure {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
 .place-thumbnail img {
     height: 8rem;
     width: 100%;
