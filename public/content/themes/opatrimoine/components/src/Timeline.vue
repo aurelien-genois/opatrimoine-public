@@ -3,7 +3,7 @@
   <v-app>
 
   <div id="timeline">  
-    <h2>Utilisation</h2>
+    <h2 class="use">Utilisation</h2>
   </div>
 
   <v-timeline
@@ -35,6 +35,8 @@
           </v-btn> -->
         </v-card-text>
       </v-card>
+
+     
     </v-timeline-item>
   </v-timeline>
 
@@ -49,19 +51,19 @@
       items: [
         {
           color: 'red lighten-2',
-          icon: 'mdi-star',
+          icon: 'mdi-eye',
         },
         {
           color: 'purple darken-1',
-          icon: 'mdi-book-variant',
+          icon: 'mdi-account-plus',
         },
         {
           color: 'green lighten-1',
-          icon: 'mdi-airballoon',
+          icon: 'mdi-table-large-plus',
         },
         {
           color: 'indigo',
-          icon: 'mdi-buffer',
+          icon: 'mdi-creation',
         },
       ],
     }),
@@ -71,12 +73,45 @@
 
 <style>
 #timeline {
-
  
-  padding-top: 30px;
-
   font-family: 'Antic Didone', serif;
 
 }
+
+
+
+p {
+
+    padding-top: 1.5em !important;
+  
+}
+
+.v-application .red.lighten-2 {
+    background-color: var(--main-color)!important;
+    border-color: var(--main-color)!important;
+
+}
+
+.v-application .purple.darken-1 {
+    background-color: var(--main-color)!important;
+    border-color: var(--main-color)!important;
+
+}
+
+.v-application .green.lighten-1 {
+    background-color: var(--main-color)!important;
+    border-color: var(--main-color)!important;
+
+}
+
+.v-application .indigo {
+    background-color: var(--main-color)!important;
+    border-color: var(--main-color)!important;
+
+}
+
+
+
+ 
 
 </style>

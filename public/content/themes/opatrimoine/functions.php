@@ -149,6 +149,14 @@ add_action(
             '1.0.0',
             true,
         );
+
+        wp_enqueue_script(
+            'burger-menu',
+            get_theme_file_uri('assets/js/burger-menu.js'),
+            [],
+            '1.0.0',
+            true,
+        );
         
         // ===========================================================
         // WARNING SUPER SALE
