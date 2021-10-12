@@ -1,5 +1,7 @@
 <?php
 
+use OPatrimoine\Models\ReservationsModel;
+
 function place_pre_get_posts($query) {
 
     if($query->is_main_query() && !is_admin() && is_post_type_archive('place')) {
@@ -109,14 +111,12 @@ function getGuidedToursByPlaceId($placeId) {
         }
         $guidedTour->thematics = $thematicsNames;
 
-
-        // add variable to know if the current user is a member to the guidedTour object
         $user = wp_get_current_user();
-        if(!in_array('member', $user->roles)) {
-            $guidedTour->isMember = true;
-        } else {
-            $guidedTour->isMember = false;
-        }
+
+        $reservationModel = new ReservationsModel;
+        $guidedTour->canReserve = $reservationModel->canReserve($guidedTour->ID, $user);
+        $reservation = $reservationModel->getReservationByGuidedTourIdAndMemberId($guidedTour->ID, $user->ID);
+        $guidedTour->currentMemberReservations = $reservation->nb_of_reservations;
 
         // add register reservation route to the guidedTour object
         global $router;
@@ -128,6 +128,16 @@ function getGuidedToursByPlaceId($placeId) {
             ],
         );
         $guidedTour->reservationUrl = $registerReservationUrl;
+        
+        // add cancel reservation route to the guidedTour object
+        $cancelReservationUrl = $router->generate(
+            'user-reservations-delete-by-guided-tour-id-and-member-id',
+            [
+                'guidedTourId' => $guidedTour->ID,
+                'memberId' => $user->ID,
+            ],
+        );
+        $guidedTour->cancelReservationUrl = $cancelReservationUrl;
     }
 
     return $guidedTours;

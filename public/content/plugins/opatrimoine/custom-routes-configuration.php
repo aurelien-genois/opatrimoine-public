@@ -79,6 +79,16 @@ $router->map(
     },
     'user-register-reservations-to-guided-tour'
 );
+$router->map(
+    'GET',
+    '/user/delete-by-guided-tour-id-and-member-id/[i:guidedTourId]/[i:memberId]/[a:currentLocation]/',
+    function($guidedTourId, $memberId, $currentLocation) {
+       $controller = new UserController();
+       $controller->deleteByTourIdAndMemberId($guidedTourId,$memberId, $currentLocation);
+    },
+    'user-reservations-delete-by-guided-tour-id-and-member-id'
+);
+
 //=======================================================================
 
 

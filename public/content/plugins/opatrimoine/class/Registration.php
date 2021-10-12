@@ -76,17 +76,6 @@ class Registration
         ';
         echo $confirmPasswordHTML;
 
-
-        $chooseTypeHTML = '
-            <p>
-                <label for="user_type">' . __('Vous ête un(e)') . '</label>
-                <select name="user_type" id="user_type" class="input">
-                    <option value="customer"> Client(e)</option>
-                    <option value="member"> membre</option>
-                </select>
-            </p>
-        ';
-        echo $chooseTypeHTML;
     }
 
     // STEP SIGNUP check errors
@@ -154,18 +143,6 @@ class Registration
                 '<strong>' . __('Error: ') . '</strong> Vos mots de passes sont différents'    // message d'erreur à aficher
             );
         }
-
-        // STEP SIGNUP Contrôle du rôle choisi par l'utilisateur.
-        // WARNING, il faut toujours contrôler les données venant de l'utilisateur avant de les insérer en BDD
-        $role = filter_input(INPUT_POST, 'user_type');
-
-        // Si $role est différent de "customer" ET également différent de member ; le role est invalide
-        if($role !== 'customer' && $role !== 'member') {
-            $errors->add(
-                'role-invalid',
-                '<strong>' . __('Error: ') . '</strong> Rôle invalide ; tentative de piratage !'
-            );
-        }
         return $errors;
     }
 
@@ -180,13 +157,13 @@ class Registration
         $user = new WP_User($userId);
 
 
-        $role = filter_input(INPUT_POST, 'user_type');
 
-        if ($role == 'customer' || $role == 'member') {
-            // par défaut dans wordpress un utilisateur est créé avec le rôle subscriber (ceci est configurable dans le backoffice)
-            $user->remove_role('subscriber');
-            $user->add_role($role);
-        }
+
+
+        // par défaut dans wordpress un utilisateur est créé avec le rôle subscriber (ceci est configurable dans le backoffice)
+        $user->remove_role('subscriber');
+        $user->add_role('member');
+        
 
 
 

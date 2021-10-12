@@ -114,6 +114,10 @@
               </v-toolbar>
               <v-card-text>
                 <p>
+                  <span v-if="selectedEvent.placeName">{{selectedEvent.placeName}} - </span>
+                  <span v-if="selectedEvent.placeCity">{{selectedEvent.placeCity}}</span>
+                </p>
+                <p>
                   <v-icon>mdi-timer-outline</v-icon>
                   {{selectedEvent.duration}}</p>
                 <p>{{selectedEvent.thematics}}</p>
@@ -122,24 +126,31 @@
                 <p>Nombre de places disponibles : {{selectedEvent.nbPlacesAvailable}} /  {{selectedEvent.totalPersons}}</p>
               </v-card-text>
 
-              <!-- TODO ajouter les conditions pour l'affichage des boutons (
-                si visite complète (selectedEvent.nbPlacesAvailable = 0), 
-                si user non "membre" (dataObj.isMember = false), 
-                si déjà inscrit ....) -->
               <!-- NTH afficher des messages si nombres de places incorrect -->
-              <v-card-actions>
-                <select v-model="selectedNumber">
+              <v-card-actions v-if="selectedEvent.nbPlacesAvailable && selectedEvent.memberCanReserve" >
+                <select v-model="selectedNumberPlaces">
                   <option v-for="index in selectedEvent.nbPlacesAvailable" :key="index" :value="index">{{index}}</option>
                 </select>
                 <p>place(s)</p>
-                <v-btn
-                  text
-                  color="secondary"
-                  @click="reservePlaces"
+                <v-btn text color="secondary" @click="reservePlaces"
                 >
-                  S'inscrire à la visite
+                  Réserver
                 </v-btn>
               </v-card-actions>
+
+              <v-card-text v-if="selectedEvent.currentMemberReservations">{{selectedEvent.currentMemberReservations}} places réservées</v-card-text>
+
+              <v-card-actions v-if="isMember && !selectedEvent.memberCanReserve">
+                <v-btn text color="secondary" @click="cancelReservation">Annuler ma réservation</v-btn>
+              </v-card-actions>
+
+              <v-card-actions v-if="!isMember">
+                <a :href="loginUrl">Connectez-vous</a>
+              </v-card-actions>
+
+              <p v-if="!selectedEvent.nbPlacesAvailable">
+                La visite est complète
+              </p>
             </v-card>
           </v-menu>
         </v-sheet>
@@ -165,16 +176,23 @@
       selectedElement: null,
       selectedOpen: false,
       events: [],
-      selectedNumber: 1,
+      selectedNumberPlaces: 1,
+      isMember: false,
+      loginUrl: String,
+      isDashboard: false,
     }),
     mounted() {
       const calendarDatas = this.$wordpressData['tours-calendar'];
+      this.isDashboard = calendarDatas.isDashboard;
 
-      calendarDatas.forEach(dataObj => {
+      this.isMember = calendarDatas.user.roles.includes('member');
+      this.loginUrl = calendarDatas.loginUrl;
 
-        const start = new Date(dataObj.date);
+      calendarDatas.guidedTours.forEach(guidedTour => {
+
+        const start = new Date(guidedTour.date);
         const end = new Date(start.valueOf());
-        const durationArr = dataObj.duration.split(':')
+        const durationArr = guidedTour.duration.split(':')
         end.setHours(start.getHours() + Number(durationArr[0])); 
         end.setUTCMinutes(start.getUTCMinutes() + durationArr[1]); 
 
@@ -182,18 +200,23 @@
         const startHour = start.getHours() + 'h' + startMin;
         
         this.events.push( {
-            name: dataObj.post_title,
+            name: guidedTour.post_title,
             start: start,
             end: end,
             color: 'blue',
             timed: true,
             hour: startHour,
-            duration: dataObj.duration,
-            thematics: dataObj.thematics.join(', '),
-            totalPersons: dataObj.totalpersons,
-            totalReservations: dataObj.totalreservations,
-            nbPlacesAvailable: dataObj.totalpersons - dataObj.totalreservations,
-            reservationUrl: dataObj.reservationUrl,
+            duration: guidedTour.duration,
+            thematics: guidedTour.thematics.join(', '),
+            totalPersons: guidedTour.totalpersons,
+            totalReservations: guidedTour.totalreservations,
+            nbPlacesAvailable: guidedTour.totalpersons - guidedTour.totalreservations,
+            reservationUrl: guidedTour.reservationUrl || 'reservation not allowed on this page',
+            cancelReservationUrl: guidedTour.cancelReservationUrl,
+            memberCanReserve: guidedTour.canReserve,
+            placeName: (guidedTour.placeoftour) ? guidedTour.placeoftour.post_title : null,
+            placeCity: (guidedTour.placeoftour) ? guidedTour.placeoftour.city : null,
+            currentMemberReservations: guidedTour.currentMemberReservations || null,
           }
         )
       });
@@ -221,6 +244,7 @@
           this.selectedEvent = event
           this.selectedElement = nativeEvent.target
           requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
+          this.selectedNumberPlaces = 1;
         }
 
         if (this.selectedOpen) {
@@ -236,10 +260,18 @@
         // remove the excess "/"
         const cleanUrl = this.selectedEvent.reservationUrl.slice(0,-1);
 
-        if (!isNaN(this.selectedNumber) && this.selectedNumber <= this.selectedEvent.nbPlacesAvailable && this.selectedNumber > 0) {
-          location.href = cleanUrl + this.selectedNumber + "/";
+        if (!isNaN(this.selectedNumberPlaces) && this.selectedNumberPlaces <= this.selectedEvent.nbPlacesAvailable && this.selectedNumberPlaces > 0) {
+          location.href = cleanUrl + this.selectedNumberPlaces + "/";
         }
-      }
+      },
+      cancelReservation () {
+        const cleanUrl = this.selectedEvent.cancelReservationUrl.slice(0,-1);
+        if(this.isDashboard) {
+          location.href = cleanUrl + "dashboard" + "/";
+        } else {
+          location.href = cleanUrl + "singleplace" + "/";
+        }
+      },
     },
   }
 </script>

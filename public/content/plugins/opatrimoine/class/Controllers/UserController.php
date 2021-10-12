@@ -24,6 +24,8 @@ class UserController extends CoreController
         // IMPORTANT WP wp_get_current_user Retrieving the logged in user (WP_User type object)
         $user = wp_get_current_user();
 
+        $registeredGuidedTours = $this->reservationModel->getGuidedToursByMemberId($user->ID);
+
 
         // STEP MODEL use of a custom table in the controller
 
@@ -31,6 +33,7 @@ class UserController extends CoreController
         // STEP MVC send variables to the view
         return $this->show('views/dashboard.view', [
             'user' => $user,
+            'guidedTours' => $registeredGuidedTours,
         ]);
     }
 
@@ -75,8 +78,30 @@ class UserController extends CoreController
     }
 
 
+    public function deleteByTourIdAndMemberId($guidedTourId, $memberId, $currentLocation)
+    {
+        global $router;
+        $redirection = get_home_url();
 
+        $guidedTour = get_post($guidedTourId);
+        if($guidedTour && $guidedTour->post_type === "guided-tour") {
+            
+            if ($currentLocation === 'dashboard') {
+                $redirection = $router->generate('user-index');
+            } else if ($currentLocation === 'singleplace') {
+                $redirection = get_the_permalink($guidedTour->placeoftour);
+            }
 
+            // decrement guidedTour
+            $currentReservation = $this->reservationModel->getReservationByGuidedTourIdAndMemberId($guidedTourId, $memberId);
+            $newNbReservations = $guidedTour->totalreservations - $currentReservation->nb_of_reservations;
+            update_field('totalreservations', $newNbReservations, $guidedTourId);
+
+            // delete reservation
+            $this->reservationModel->deleteByTourIdAndMemberId($guidedTourId, $memberId);
+        }
+        dd(wp_redirect($redirection));
+    }
 
     // BONUS ACF update user data
     public function update()
