@@ -50,6 +50,27 @@
     position: relative;
 }
 
+@media screen and (min-width: 1150px) {
+    .post-listing {
+        grid-template-columns: repeat(4, 1fr);
+       
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .post-listing {
+        grid-template-columns: repeat(2, 1fr);
+       
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .post-listing {
+        grid-template-columns: repeat(1, 1fr);
+       
+    }
+}
+
 .load-more-btn {
     color: var(--black-color);
     padding: 4px;
@@ -76,7 +97,7 @@
     object-fit: cover;
 }
 .place-thumbnail .place-infos {
-    padding: 5px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

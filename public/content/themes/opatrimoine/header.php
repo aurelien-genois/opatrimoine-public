@@ -55,13 +55,13 @@
                 ?>
                
             
-            
-            <div class="buttons">
-                <a class="button" href="<?= wp_login_url($registration_redirect); ?>">Connexion</a>
-        
-                <a class="button" href="<?= wp_registration_url(); ?>">S'inscrire</a>
                 
-            </div>
+                <div class="buttons">
+                    <a class="button" href="<?= wp_login_url($registration_redirect); ?>">Connexion</a>
+            
+                    <a class="button" href="<?= wp_registration_url(); ?>">S'inscrire</a>
+                    
+                </div>
             </div>
 
             <div class="burger-menu">

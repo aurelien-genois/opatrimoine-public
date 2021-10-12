@@ -3,7 +3,7 @@
 function place_pre_get_posts($query) {
 
     if($query->is_main_query() && !is_admin() && is_post_type_archive('place')) {
-        $query->set('posts_per_page', 3);
+        $query->set('posts_per_page', 12);
 
         if(!empty($_GET)) {
             // Wordpress filters automatically because input's name is the same as taxonomy's name
