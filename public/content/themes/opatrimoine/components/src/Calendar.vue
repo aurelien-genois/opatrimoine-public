@@ -194,7 +194,7 @@
         const end = new Date(start.valueOf());
         const durationArr = guidedTour.duration.split(':')
         end.setHours(start.getHours() + Number(durationArr[0])); 
-        end.setUTCMinutes(start.getUTCMinutes() + durationArr[1]); 
+        end.setMinutes(start.getMinutes() + Number(durationArr[1])); 
 
         const startMin = (String(start.getMinutes()).length < 2) ? '0' + start.getMinutes() : start.getMinutes();
         const startHour = start.getHours() + 'h' + startMin;
