@@ -13,6 +13,12 @@ class TourThematicsDatas
         'Préhistoire',
         'Religion',
         'Cinéma',
+        'Gare',
+        'XIXeme siècle',
+        'XVIIIeme siècle',
+        'Impressionisme',
+        'Peinture',
+        'Contemporain',
     ];
 
     public function getTourThematics()
