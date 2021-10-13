@@ -7,7 +7,7 @@ $cities = getCities();
 ?>
 <main class="page-content">
 
-    <h1>Liste des lieux</h1>
+    <h2 class="place-list">Liste des lieux</h2>
 
     <form class="places-list-form">
         <div class="inputs-container">

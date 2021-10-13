@@ -9,87 +9,17 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Antic Didone', serif;
 }
 
-
-  
-
-@media screen and (max-width: 700px){
-
-
-    /* header */
-
-    .navbar .burger-menu {
-
-        display: block;
-        cursor: pointer;
-
-    }
-
-    .navbar {
-        position: relative;
-    }
-
-    ul.nav-menu{
-        justify-content: center;
-        margin-bottom: 40px;
-    }
-
-    .nav-menu li a {
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-
-
-    .nav-list {
-        background: rgba(255,255,255, .8);
-        padding: 20px;
-        position: absolute;
-        left: 0;
-        transform: translateX(-100%);
-        opacity: 0;
-        top: 100%;
-        z-index: 999;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        transition: 0.4s;
-        box-shadow:
-            0 10px 27px rgba(0, 0, 0, 0.05);    
-    }
-
-    .nav-list.active {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    .navbar .burger-menu.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .navbar .burger-menu.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .navbar .burger-menu.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-
-
-
-
-    /* home-page */
-    .page-content {
-        margin: 0 15px;
-    }
-
-    #presentation {
-        margin: 0;
-    
-    }
-
-
+h2 {
+    font-family: 'Antic Didone', serif;
+    margin: 1em 0 0 0;
 }
 
+p {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    padding-top: 1em !important;
+
+}
+  
 
 
 /* header */
@@ -129,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
-ul {
+.nav-menu {
     list-style: none;
     display: flex;
     flex-direction: row;  
@@ -144,8 +74,14 @@ a {
   
 }
 
+ul {
+    list-style-type: none;
+}
+
 li a {
-    margin-right: 3em;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 1em 0 1em;
     
 }
 
@@ -163,7 +99,7 @@ li a:hover {
     margin-top: auto;
     margin-bottom: auto;
     text-align:center;
-    padding: 5.5px;
+    padding: 5.2px;
     border: none;
     background-color: var(--main-color);    
     color: var(--white-color);
@@ -175,7 +111,7 @@ li a:hover {
 }
 
 .buttons a {
-    margin: 0 20px;
+    margin: 0 8px;
 }
 
 .button-dashboard {
@@ -202,22 +138,15 @@ li a:hover {
 
 /* home-page */
 #presentation {
-    margin: 3em 11em 0 11em;
-
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-h2 {
-    font-family: 'Antic Didone', serif;
-}
-
-p {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    padding-top: 1em !important;
-
-}
 
 .v-timeline.v-timeline--align-top.theme--light {
-    margin: 0 7em;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 10px;
 }
 
 .use {
@@ -248,8 +177,7 @@ p {
 }
 
 .fa-twitter-square {
-    margin: 0 1em 0 1em;
-    
+    margin: 0 1em 0 1em;  
    
 }
 
@@ -258,5 +186,127 @@ text-align: center;
 }
 
 
+/* page-presentation */
 
 
+    
+
+
+@media screen and (max-width: 970px){
+
+
+    /* header */
+
+    .navbar .burger-menu {
+
+        display: block;
+        cursor: pointer;
+
+    }
+
+    .navbar {
+        justify-content: space-between;
+        position: relative;
+    }
+
+    ul.nav-menu{
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+
+    .nav-menu li a {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .nav-menu li {
+   
+        margin: 8px 0;
+        text-align: center;
+    }
+
+
+    .nav-list {
+       
+        background: rgba(255,255,255, .8);
+        padding: 20px;
+        position: absolute;
+        left: 0;
+        transform: translateX(-100%);
+        opacity: 0;
+        top: 100%;
+        z-index: 999;
+        width: 100%;
+        text-align: center;
+        transition: 0.4s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);    
+    }
+
+    .nav-list.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .navbar .burger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar .burger-menu.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .navbar .burger-menu.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    #presentation {
+        padding: 0 2em 0 2em;
+    
+    }
+
+    .container {
+        margin: 0 15px;
+    }
+
+    /* archive-place */
+    .page-content {
+        margin: 0 15px;
+        
+    }
+
+
+    .buttons .button {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 971px) {
+    .navbar {
+        position: relative;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+    }
+
+
+}
+
+@media screen and (max-width: 563px) {
+
+
+    ul.nav-menu {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        margin: 8px 0;
+        text-align: center;
+    }
+
+}
