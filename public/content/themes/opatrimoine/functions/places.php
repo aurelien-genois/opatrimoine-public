@@ -19,11 +19,11 @@ function place_pre_get_posts($query) {
             //     ]);
             // }
 
-            if (!empty($_GET['place-city'])) {
+            if (!empty($_GET['place-department'])) {
                 $query->set('meta_query', [
                     [
-                    'key' => 'city',
-                    'value' => $_GET['place-city'],
+                    'key' => 'department',
+                    'value' => $_GET['place-department'],
                     ],
                 ]);
             }
@@ -62,21 +62,21 @@ function getPlaceTypes() {
     return $placeTypes;
 }
 
-function getCities() {
+function getDepartments() {
 
-    // NTH get all france cities from an API 
-    // get all place posts to get their city
+    // NTH get all france departments from an API 
+    // get all place posts to get their department
     $placesPosts = get_posts(['post_type' => 'place', 'posts_per_page' => -1, 'cache_results'  => false,'update_post_term_cache' => false]);
-    // get all cities from the posts
-    $cities = [];
+    // get all departments from the posts
+    $departments = [];
     foreach($placesPosts as $placesPost) {
-        if(in_array(get_field('city', $placesPost->ID), $cities)) {
-            continue; // ignore if a city already register in $cities
+        if(in_array(get_field('department', $placesPost->ID), $departments)) {
+            continue; // ignore if a department already register in $departments
         }
-        $cities[] = get_field('city', $placesPost->ID);
+        $departments[] = get_field('department', $placesPost->ID);
     };
 
-    return $cities;
+    return $departments;
 }
 
 function getGuidedToursByPlaceId($placeId) {
@@ -161,13 +161,13 @@ function be_load_more_js() {
     }
     $placeName = "";
     $placeType = "";
-    $placeCity = "";
+    $placeDepartment = "";
 
     if (!empty($_GET['place-name'])) {
         $placeName = $_GET['place-name'];
     };
-    if (!empty($_GET['place-city'])) {
-        $placeCity = $_GET['place-city'];
+    if (!empty($_GET['place-department'])) {
+        $placeDepartment = $_GET['place-department'];
     };
     if (!empty($_GET['place-type'])) {
         $placeType = $_GET['place-type'];
@@ -177,8 +177,8 @@ function be_load_more_js() {
     $query = [
         "post_type" => "place",
         "place-type" => $placeType,
-        'meta_key' => 'city',
-        'meta_value' => $placeCity,
+        'meta_key' => 'department',
+        'meta_value' => $placeDepartment,
         'custom_s' => $placeName, // for the title_filter
         'posts_per_page' => 3,
     ];

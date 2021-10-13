@@ -33,7 +33,7 @@
 .places-list-form input[name="place-name"] {
     width: 50%;
 }
-.places-list-form select[name="place-type"], .places-list-form select[name="place-city"] {
+.places-list-form select[name="place-type"], .places-list-form select[name="place-department"] {
     width: 24%;;
 }
 
