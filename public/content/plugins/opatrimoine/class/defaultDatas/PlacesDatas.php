@@ -24,7 +24,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.musee-orsay.fr/',
             'acf-address' => '1 Rue de la Légion d\'Honneur
             75007, Paris ',
-            'acf-city' => 'Paris',
+            'acf-department' => 'Paris',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2018/04/26/09/27/architecture-3351480_960_720.jpg',
         ],
@@ -42,7 +42,7 @@ class PlacesDatas
             'acf-urlsite' => 'http://www.paris-arc-de-triomphe.fr/Actualites/L-Arc-de-triomphe-Wrapped-Paris-1961-2021',
             'acf-address' => 'Place Charles de Gaulle 
             75017, Paris ',
-            'acf-city' => 'Paris',
+            'acf-department' => 'Paris',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2021/09/18/16/05/arc-de-triomphe-6635521_960_720.jpg',
         ],
@@ -60,7 +60,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://fr.wikipedia.org/wiki/Place_de_la_Concorde',
             'acf-address' => 'Place de la Concorde 
             75008, Paris ',
-            'acf-city' => 'Paris',
+            'acf-department' => 'Paris',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2018/11/06/15/02/fontaine-des-mers-3798480_960_720.jpg',
         ],
@@ -79,7 +79,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.abbaye-saint-savin.fr/',
             'acf-address' => 'Place de la Libération 
             86310, Saint-Savin ',
-            'acf-city' => 'Poitou-Charentes',
+            'acf-department' => 'Vienne',
             // Image
             'place-photo' => 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Saint-Savin_abbaye_%281%29.jpg',
         ],
@@ -98,7 +98,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.amiens.fr/Vivre-a-Amiens/Culture-Patrimoine/Patrimoine-mondial/La-cathedrale-Notre-Dame-d-Amiens',
             'acf-address' => '30 Place Notre Dame 
             80000, Amiens ',
-            'acf-city' => 'Picardie',
+            'acf-department' => 'Somme',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2017/08/29/17/30/cathedral-2694168_960_720.jpg',
         ],
@@ -117,7 +117,7 @@ class PlacesDatas
             'acf-urlsite' => 'http://www.chartres-cathedrale.fr/',
             'acf-address' => '16 Cloître Notre Dame 
             28000, Chartres ',
-            'acf-city' => 'Centre',
+            'acf-department' => 'Eure-et-Loir',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2016/01/03/22/06/chartres-cathedral-1120139_960_720.jpg',
         ],
@@ -136,7 +136,7 @@ class PlacesDatas
             'acf-urlsite' => 'http://www.bourges-cathedrale.fr/',
             'acf-address' => 'Place Etienne Dolet 
             18000, Bourges ',
-            'acf-city' => 'Centre',
+            'acf-department' => 'Cher',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2018/08/11/20/37/bourg-en-bresse-3599450_960_720.jpg',
         ],
@@ -154,7 +154,7 @@ class PlacesDatas
             'acf-telephone' => '01 60 71 50 70',
             'acf-urlsite' => 'https://www.chateaudefontainebleau.fr/',
             'acf-address' => '77300, Fontainebleau ',
-            'acf-city' => 'Ile-de-France',
+            'acf-department' => 'Seine-et-Marne',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2020/08/10/08/56/castle-5477200_960_720.jpg',
         ],
@@ -173,7 +173,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.versailles-tourisme.com/chateau-de-versailles.html',
             'acf-address' => 'Place d\'Armes 
             78000, Versailles ',
-            'acf-city' => 'Ile-de-France',
+            'acf-department' => 'Yvelines',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2015/08/08/12/05/versailles-880359_960_720.jpg',
         ],
@@ -184,7 +184,7 @@ class PlacesDatas
             'post_excerpt' => 'Sur un îlot rocheux au milieu de grèves immenses soumises au va-et-vient de puissantes marées, à la limite entre la Normandie et la Bretagne...',
             'post_type' => 'place',
             'post_status' => 'publish',
-            'tax_input' => ['place-type' => ['Place']],
+            'tax_input' => ['place-type' => ['Ville']],
             // NTH 'open' en évolution potentielle
             'comment_status' => 'closed',
             // ACF custom fields
@@ -192,7 +192,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.ot-montsaintmichel.com/',
             'acf-address' => 'Grande Rue
             50170, Le Mont-Saint-Michel ',
-            'acf-city' => 'Normandie',
+            'acf-department' => 'Manche',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2016/01/19/17/32/castle-1149756_960_720.jpg',
         ],
@@ -203,7 +203,7 @@ class PlacesDatas
             'post_excerpt' => 'La ville médiévale fortifiée de Provins se situe au cœur de l\'ancienne région des puissants comtes de Champagne...',
             'post_type' => 'place',
             'post_status' => 'publish',
-            'tax_input' => ['place-type' => ['Place']],
+            'tax_input' => ['place-type' => ['Ville']],
             // NTH 'open' en évolution potentielle
             'comment_status' => 'closed',
             // ACF custom fields
@@ -211,7 +211,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.provins.net/',
             'acf-address' => '4 Chemin de Villecran 
             77160, Provins ',
-            'acf-city' => 'Ile-de-France',
+            'acf-department' => 'Seine-et-Marne',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2018/08/04/19/24/tower-3584305_960_720.jpg',
         ],
@@ -230,7 +230,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.louvre.fr/',
             'acf-address' => 'Rue de Rivoli 
             75001, Paris ',
-            'acf-city' => 'Paris',
+            'acf-department' => 'Paris',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2015/03/26/10/06/the-louvre-690929_960_720.jpg',
         ],
@@ -249,7 +249,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.centrepompidou.fr/fr/',
             'acf-address' => 'Place Georges-Pompidou 
             75004, Paris ',
-            'acf-city' => 'Paris',
+            'acf-department' => 'Paris',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2015/03/15/20/06/paris-674964_960_720.jpg',
         ],

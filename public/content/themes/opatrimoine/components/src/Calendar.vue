@@ -115,7 +115,7 @@
               <v-card-text>
                 <p>
                   <span v-if="selectedEvent.placeName">{{selectedEvent.placeName}} - </span>
-                  <span v-if="selectedEvent.placeCity">{{selectedEvent.placeCity}}</span>
+                  <span v-if="selectedEvent.placeDepartment">{{selectedEvent.placeDepartment}}</span>
                 </p>
                 <p>
                   <v-icon>mdi-timer-outline</v-icon>
@@ -215,7 +215,7 @@
             cancelReservationUrl: guidedTour.cancelReservationUrl,
             memberCanReserve: guidedTour.canReserve,
             placeName: (guidedTour.placeoftour) ? guidedTour.placeoftour.post_title : null,
-            placeCity: (guidedTour.placeoftour) ? guidedTour.placeoftour.city : null,
+            placeDepartment: (guidedTour.placeoftour) ? guidedTour.placeoftour.department : null,
             currentMemberReservations: guidedTour.currentMemberReservations || null,
           }
         )

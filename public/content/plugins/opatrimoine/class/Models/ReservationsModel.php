@@ -112,8 +112,8 @@ class ReservationsModel extends CoreModel {
                 $guidedTour->{$key} = $value;
             }
 
-            // add the acf field city to the place post object
-            $guidedTour->placeoftour->city = get_field('city', $guidedTour->placeoftour->ID);
+            // add the acf field department to the place post object
+            $guidedTour->placeoftour->department = get_field('department', $guidedTour->placeoftour->ID);
             
             // add thematics array to the guidedTour object
             $thematics = get_the_terms

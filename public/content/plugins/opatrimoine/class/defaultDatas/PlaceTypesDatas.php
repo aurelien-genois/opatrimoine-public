@@ -12,7 +12,7 @@ class PlaceTypesDatas
         'Cathédrale',
         'Monastère',
         'Château',
-        
+        'Ville',
     ];
 
     public function getPlaceTypes()

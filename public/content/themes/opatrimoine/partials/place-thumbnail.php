@@ -19,8 +19,6 @@
         </p>
         <a class="links" href="<?php the_permalink(); ?>">
             Voir le lieu
-        </a>
-        
-        <!-- <strong>?= get_field('city', the_ID()) ?> </strong> -->
+        </a>  
     </div>
 </article>

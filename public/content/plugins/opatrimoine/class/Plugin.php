@@ -36,7 +36,7 @@ class Plugin
                 ['key' => 'telephone', 'label' => 'Téléphone', 'name' => 'telephone', 'type' => 'text'],
                 ['key' => 'urlsite', 'label' => 'URL du site', 'name' => 'urlsite', 'type' => 'url'],
                 ['key' => 'address', 'label' => 'Adresse', 'name' => 'address', 'type' => 'text'],
-                ['key' => 'city', 'label' => 'Ville', 'name' => 'city', 'type' => 'text'],
+                ['key' => 'department', 'label' => 'Ville', 'name' => 'department', 'type' => 'text'],
                 // NTH noter un lieu
                 //['key' => 'rating', 'label' => 'Note', 'name' => 'rating', 'type' => 'number'],
             ],
@@ -174,7 +174,7 @@ class Plugin
                 update_field('telephone', $place['acf-telephone'], $postId);
                 update_field('urlsite', $place['acf-urlsite'], $postId);
                 update_field('address', $place['acf-address'], $postId);
-                update_field('city', $place['acf-city'], $postId);
+                update_field('department', $place['acf-department'], $postId);
             };
 
             // save places postId for link them to guided-tours
