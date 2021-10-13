@@ -153,7 +153,7 @@ class CustomPostType
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => '',
+            'default_value' => ($fieldKey === 'totalreservations') ? 0 : '',
             'placeholder' => '',
             'prepend' => '',
             'append' => '',
