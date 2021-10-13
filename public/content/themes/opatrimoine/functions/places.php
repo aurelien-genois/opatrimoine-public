@@ -116,7 +116,7 @@ function getGuidedToursByPlaceId($placeId) {
         $reservationModel = new ReservationsModel;
         $guidedTour->canReserve = $reservationModel->canReserve($guidedTour->ID, $user);
         $reservation = $reservationModel->getReservationByGuidedTourIdAndMemberId($guidedTour->ID, $user->ID);
-        $guidedTour->currentMemberReservations = $reservation->nb_of_reservations;
+        $guidedTour->currentMemberReservations = (is_object($reservation)) ? $reservation->nb_of_reservations : false;
 
         // add register reservation route to the guidedTour object
         global $router;

@@ -9,6 +9,10 @@ class PlaceTypesDatas
         'Place',
         'Bâtiment officiel',
         'Monument mémorial',
+        'Cathédrale',
+        'Monastère',
+        'Château',
+        
     ];
 
     public function getPlaceTypes()

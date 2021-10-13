@@ -1,5 +1,5 @@
 <?php
-if($_GET['logout']) {
+if(isset($_GET['logout'])) {
     wp_logout();
     $logoutMsg = "Vous êtes bien déconnecté";
 }
