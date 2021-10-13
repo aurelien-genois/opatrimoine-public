@@ -79,7 +79,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.abbaye-saint-savin.fr/',
             'acf-address' => 'Place de la Libération 
             86310, Saint-Savin ',
-            'acf-department' => 'Poitou-Charentes',
+            'acf-department' => 'Vienne',
             // Image
             'place-photo' => 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Saint-Savin_abbaye_%281%29.jpg',
         ],
@@ -98,7 +98,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.amiens.fr/Vivre-a-Amiens/Culture-Patrimoine/Patrimoine-mondial/La-cathedrale-Notre-Dame-d-Amiens',
             'acf-address' => '30 Place Notre Dame 
             80000, Amiens ',
-            'acf-department' => 'Picardie',
+            'acf-department' => 'Somme',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2017/08/29/17/30/cathedral-2694168_960_720.jpg',
         ],
@@ -117,7 +117,7 @@ class PlacesDatas
             'acf-urlsite' => 'http://www.chartres-cathedrale.fr/',
             'acf-address' => '16 Cloître Notre Dame 
             28000, Chartres ',
-            'acf-department' => 'Centre',
+            'acf-department' => 'Eure-et-Loir',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2016/01/03/22/06/chartres-cathedral-1120139_960_720.jpg',
         ],
@@ -136,7 +136,7 @@ class PlacesDatas
             'acf-urlsite' => 'http://www.bourges-cathedrale.fr/',
             'acf-address' => 'Place Etienne Dolet 
             18000, Bourges ',
-            'acf-department' => 'Centre',
+            'acf-department' => 'Cher',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2018/08/11/20/37/bourg-en-bresse-3599450_960_720.jpg',
         ],
@@ -154,7 +154,7 @@ class PlacesDatas
             'acf-telephone' => '01 60 71 50 70',
             'acf-urlsite' => 'https://www.chateaudefontainebleau.fr/',
             'acf-address' => '77300, Fontainebleau ',
-            'acf-department' => 'Ile-de-France',
+            'acf-department' => 'Seine-et-Marne',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2020/08/10/08/56/castle-5477200_960_720.jpg',
         ],
@@ -173,7 +173,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.versailles-tourisme.com/chateau-de-versailles.html',
             'acf-address' => 'Place d\'Armes 
             78000, Versailles ',
-            'acf-department' => 'Ile-de-France',
+            'acf-department' => 'Yvelines',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2015/08/08/12/05/versailles-880359_960_720.jpg',
         ],
@@ -192,7 +192,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.ot-montsaintmichel.com/',
             'acf-address' => 'Grande Rue
             50170, Le Mont-Saint-Michel ',
-            'acf-department' => 'Normandie',
+            'acf-department' => 'Manche',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2016/01/19/17/32/castle-1149756_960_720.jpg',
         ],
@@ -211,7 +211,7 @@ class PlacesDatas
             'acf-urlsite' => 'https://www.provins.net/',
             'acf-address' => '4 Chemin de Villecran 
             77160, Provins ',
-            'acf-department' => 'Ile-de-France',
+            'acf-department' => 'Seine-et-Marne',
             // Image
             'place-photo' => 'https://cdn.pixabay.com/photo/2018/08/04/19/24/tower-3584305_960_720.jpg',
         ],

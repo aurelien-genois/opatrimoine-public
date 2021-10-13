@@ -64,16 +64,17 @@ function getPlaceTypes() {
 
 function getDepartments() {
 
-    // NTH get all france departments from an API 
-    // get all place posts to get their department
-    $placesPosts = get_posts(['post_type' => 'place', 'posts_per_page' => -1, 'cache_results'  => false,'update_post_term_cache' => false]);
-    // get all departments from the posts
+    $resource = curl_init('https://geo.api.gouv.fr/departements');
+    curl_setopt_array($resource, [
+        CURLOPT_RETURNTRANSFER => true,
+    ]);
+    $jsonString = curl_exec($resource);
+    $departmentsArr = json_decode($jsonString);
+
+    // get all departments from the official API geo.api.gouv.fr
     $departments = [];
-    foreach($placesPosts as $placesPost) {
-        if(in_array(get_field('department', $placesPost->ID), $departments)) {
-            continue; // ignore if a department already register in $departments
-        }
-        $departments[] = get_field('department', $placesPost->ID);
+    foreach($departmentsArr as $department) {
+        $departments[] = $department->nom;
     };
 
     return $departments;
