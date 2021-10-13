@@ -8,8 +8,11 @@ class TourThematicsDatas
         'Noblesse',
         'Renaissance',
         'Moyen-âge',
-        'Bande déssinée',
+        'Bande dessinée',
         'Littérature',
+        'Préhistoire',
+        'Religion',
+        'Cinéma',
     ];
 
     public function getTourThematics()
