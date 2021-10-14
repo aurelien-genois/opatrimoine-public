@@ -15,7 +15,7 @@ get_header();
 <?php
     get_template_part('partials/carousel');
 ?>
-<main class="container">
+<main class="page-content">
 
 
     <section id='presentation'> 

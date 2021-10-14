@@ -87,8 +87,8 @@ li a {
 
 li a:hover {
     color: var(--main-color);
-      
-    }
+
+}
 
 
 .button, button[type="submit"] {
@@ -113,6 +113,14 @@ li a:hover {
 .buttons {  
     margin-top: auto;
     margin-bottom: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+a.button.button-dashboard {
+    margin-bottom: auto;
+    margin-top: auto;
 }
 
 .buttons a {
@@ -122,8 +130,6 @@ li a:hover {
 .button-dashboard {
     width: auto;
     text-align: center;
-    padding: 
-
 }
 
 .burger-menu {
@@ -280,10 +286,6 @@ text-align: center;
     #presentation {
         padding: 0 2em 0 2em;
     
-    }
-
-    .container {
-        margin: 0 15px;
     }
 
     /* archive-place */

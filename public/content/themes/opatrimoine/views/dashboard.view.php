@@ -14,7 +14,7 @@ get_header();
 <main class="page-content">
     <div id="user">
     <h2 class="user-name"><?= $user->display_name ?></h2>
-    <a href="<?= get_home_url() . "/?logout=true"?>">Se déconnecter</a>
+    <a class="button button-dashboard" href="<?= get_home_url() . "/?logout=true"?>">Se déconnecter</a>
     <!-- NTH link to updtate user informations -->
     </div>
     <section class="place-tours">

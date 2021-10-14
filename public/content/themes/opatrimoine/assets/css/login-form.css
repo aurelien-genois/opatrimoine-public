@@ -3,12 +3,15 @@
 }
 .login h1::after {
   content: "oPatrimoine";
-  
   font-size: 2rem;
   color: white;
-  margin-bottom: 1em !important;
+  margin-bottom: 1em !important;  
+}
 
-  
+#loginform input:focus, #loginform input:active {
+  outline:  #caa12f;
+  border-color:   #caa12f;
+  box-shadow: 0 0 0 0 transparent;
 }
 
 .wp-core-ui .button-primary {
