@@ -52,26 +52,26 @@
         {
           color: 'red lighten-2',
           icon: 'mdi-eye',
-          title: "étape 1",
-          content: "blablabla 1",
+          title: "Étape 1",
+          content: "Venez découvrir des lieux insolites du patrimoine Français et parcourez nos nombreuses visites guidées disponibles sur notre site O'Patrimoine.",
         },
         {
           color: 'purple darken-1',
           icon: 'mdi-account-plus',
-          title: "étape 2",
-          content: "blablabla 2",
+          title: "Étape 2",
+          content: "Créez votre compte utilisateur afin de pouvoir réserver des visites guidées qui sont à votre disposition sur O'Patrimoine.",
         },
         {
           color: 'green lighten-1',
           icon: 'mdi-table-large-plus',
-          title: "étape 3",
-          content: "blablabla 3",
+          title: "Étape 3",
+          content: "Suite à votre inscription effectuée, vous pouvez dorénavant réserver vos visites guidées en quelques cliques dans les lieux de votre choix.",
         },
         {
           color: 'indigo',
           icon: 'mdi-creation',
-          title: "étape 4",
-          content: "blablabla 4",
+          title: "Étape 4",
+          content: "Une fois que ces trois étapes ont été accomplies, vous pouvez dès à présent profiter pleinement ce qu'O'Patrimoine a à vous offrir, Let's go !",
         },
       ],
     }),
@@ -91,7 +91,7 @@
 .p-cards {
 
     padding-top: 1.5em !important;
-    min-width: 40vw;
+    
   
 }
 
