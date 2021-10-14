@@ -115,7 +115,7 @@
               <v-card-text>
                 <p>
                   <span v-if="selectedEvent.placeName">{{selectedEvent.placeName}} - </span>
-                  <span v-if="selectedEvent.placeCity">{{selectedEvent.placeCity}}</span>
+                  <span v-if="selectedEvent.placeDepartment">{{selectedEvent.placeDepartment}}</span>
                 </p>
                 <p>
                   <v-icon>mdi-timer-outline</v-icon>
@@ -194,7 +194,7 @@
         const end = new Date(start.valueOf());
         const durationArr = guidedTour.duration.split(':')
         end.setHours(start.getHours() + Number(durationArr[0])); 
-        end.setUTCMinutes(start.getUTCMinutes() + durationArr[1]); 
+        end.setMinutes(start.getMinutes() + Number(durationArr[1])); 
 
         const startMin = (String(start.getMinutes()).length < 2) ? '0' + start.getMinutes() : start.getMinutes();
         const startHour = start.getHours() + 'h' + startMin;
@@ -215,7 +215,7 @@
             cancelReservationUrl: guidedTour.cancelReservationUrl,
             memberCanReserve: guidedTour.canReserve,
             placeName: (guidedTour.placeoftour) ? guidedTour.placeoftour.post_title : null,
-            placeCity: (guidedTour.placeoftour) ? guidedTour.placeoftour.city : null,
+            placeDepartment: (guidedTour.placeoftour) ? guidedTour.placeoftour.department : null,
             currentMemberReservations: guidedTour.currentMemberReservations || null,
           }
         )

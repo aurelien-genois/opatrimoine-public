@@ -2,7 +2,7 @@
 get_header();
 
 $placeTypes = getPlaceTypes();
-$cities = getCities();
+$departments = getDepartments();
 
 ?>
 <main class="page-content">
@@ -12,10 +12,10 @@ $cities = getCities();
     <form class="places-list-form">
         <div class="inputs-container">
             <fieldset>
-                <input type="text" id="place-name" name="place-name" value="<?= $_GET['place-name'] ?? '' ?>">
+                <input type="text" id="place-name" name="place-name" value="<?= $_GET['place-name'] ?? '' ?>" placeholder="Ajoutez un mot clé">
 
                 <select name="place-type" id="place-type">
-                    <option value="">All</option>
+                    <option value="">Tous les types de lieux</option>
 
                     <?php foreach($placeTypes as $placeType) :?>
                     <option value="<?= $placeType->slug ?>" <?= (isset($_GET['place-type']) && $_GET['place-type'] == $placeType->slug) ? 'selected' : '' ?>>
@@ -24,11 +24,11 @@ $cities = getCities();
                     <?php endforeach; ?>
                 </select>
 
-                <select name="place-city" id="place-city">
-                    <option value="">All</option>
+                <select name="place-department" id="place-department">
+                    <option value="">Tous les départements</option>
 
-                    <?php foreach($cities as $city) :?>
-                    <option value="<?= $city ?>"  <?= (isset($_GET['place-city']) && $_GET['place-city'] == $city) ? 'selected' : '' ?>><?= $city ?></option>
+                    <?php foreach($departments as $department) :?>
+                    <option value="<?= $department ?>"  <?= (isset($_GET['place-department']) && $_GET['place-department'] == $department) ? 'selected' : '' ?>><?= $department ?></option>
                     <?php endforeach ?>
                 </select>
 
