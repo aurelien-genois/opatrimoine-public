@@ -3,10 +3,50 @@
 }
 .login h1::after {
   content: "oPatrimoine";
+  
   font-size: 2rem;
-  color: whitesmoke;
+  color: white;
+  margin-bottom: 1em !important;
+
   
 }
+
+.wp-core-ui .button-primary {
+  background: rgba(202, 161, 47, 1);
+  border-color:  rgba(202, 161, 47, 1);
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+.wp-core-ui .button-primary:active {
+  outline:  rgb(192, 153, 46);
+  border-color:   rgb(192, 153, 46);
+
+}
+
+.wp-core-ui .button-primary:hover {
+  background:  rgb(192, 153, 46);
+  border-color:   rgb(192, 153, 46);
+
+}
+
+span.dashicons.dashicons-visibility {
+  color: #3c434a;
+}
+
+span.dashicons.dashicons-hidden {
+  color: #3c434a;
+}
+
+p#nav {
+  color: white !important;
+}
+
+a {
+  color: white !important;
+}
+
 
 #login {
 
@@ -15,6 +55,7 @@ padding: 0 0 0 !important;
 }
 
 body {
+  
   background-color: #fff;
   background-image:
     radial-gradient(circle, rgba(202, 161, 47, 1) 20%, rgba(253, 253, 253, 0.973) 100%);
@@ -29,4 +70,5 @@ body {
 #registerform {
   background-color: white;
   backdrop-filter: blur(2px);
+  
 }
