@@ -88,6 +88,16 @@ class Registration
         // DOC PHP filter_input https://www.php.net/filter_input
         $password = filter_input(INPUT_POST, 'user_password');
         $passwordConfirmation = filter_input(INPUT_POST, 'user_confirm_password');
+        $username = filter_input(INPUT_POST, 'user_login');
+        $email = filter_input(INPUT_POST, 'user_email');
+
+        if(mb_strlen($username) > 10) {
+            $errors->add('username-too-long','<strong>' . __('Error: ') . '</strong> Votre pseudo doit contenir moins de 10 caractères');
+        }
+        
+        if(mb_strlen($email) > 30) {
+            $errors->add('email-too-long','<strong>' . __('Error: ') . '</strong> Votre email doit contenir moins de 30 caractères');
+        }
 
         if(empty($password)) {
             $errors->add(
@@ -96,7 +106,6 @@ class Registration
             );
         }
 
-        /*
         // le mot de passe doit contenir un chiffre
         // plus  court : if(!preg_match('/\d/', $password))
         if(!preg_match('/[0-9]/', $password)) {
@@ -130,8 +139,9 @@ class Registration
                 '<strong>' . __('Error: ') . '</strong> Votre mot de passe doit faire six caractères au minimum'
             );
         }
-        */
-
+        if(mb_strlen($password) > 30) {
+            $errors->add('password-too-long','<strong>' . __('Error: ') . '</strong> Votre mot de passe doit contenir moins de 30 caractères');
+        }
 
         if($password !== $passwordConfirmation) {
             // si le mot de passe choisi par l'utilisateur n'est pas identique à la confirmation du mot de passe, nous ajoutons un message d'erreur
