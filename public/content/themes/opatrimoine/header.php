@@ -55,7 +55,7 @@
                 ?>
                 <div class="buttons">            
                     <?php if (is_user_logged_in() && current_user_can('member')): ?>
-                        <p>Bonjour <?= wp_get_current_user()->display_name ?></p>
+                        <p id="text-user-dashboard">Bonjour <?= wp_get_current_user()->display_name ?></p>
                         <a class="button button-dashboard" href="<?= $registration_redirect ?>">Mon dashboard</a>
                     <?php elseif (is_user_logged_in() && current_user_can('customer')): ?>
                         <p>Bonjour <?= wp_get_current_user()->display_name ?></p>

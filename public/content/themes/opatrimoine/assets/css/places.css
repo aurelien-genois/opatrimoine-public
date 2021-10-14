@@ -1,3 +1,7 @@
+/* archive-place */
+.page-content {
+    margin: 0 50px;
+}
 
 /* Filter Form */
 :focus {
@@ -8,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1.5em;
 }
 
 .places-list-form select {
@@ -50,6 +55,10 @@
     position: relative;
 }
 
+.place-list {
+    margin: 1em 0 0.5em 0;
+}
+
 @media screen and (min-width: 1150px) {
     .post-listing {
         grid-template-columns: repeat(4, 1fr);
@@ -82,6 +91,7 @@
     left: 50%;
     width: 200px;
     margin-left: -100px;
+   
 }
 
 /* Place thumbnail */
@@ -103,7 +113,7 @@
     object-fit: cover;
 }
 .place-thumbnail .place-infos {
-    padding: 10px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
