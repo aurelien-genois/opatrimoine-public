@@ -8,6 +8,7 @@ function place_pre_get_posts($query) {
         $query->set('posts_per_page', 12);
 
         if(!empty($_GET)) {
+            $_GET['place-type'] = htmlspecialchars($_GET['place-type']);
             // Wordpress filters automatically because input's name is the same as taxonomy's name
             // if ($_GET['place-type'] !== "all") {
             //     $query->set('tax_query', [
@@ -19,11 +20,11 @@ function place_pre_get_posts($query) {
             //     ]);
             // }
 
-            if (!empty($_GET['place-department'])) {
+            if (!empty($_GET['place-department']) && mb_strlen($_GET['place-department']) > 0 && mb_strlen($_GET['place-department']) <= 30) {
                 $query->set('meta_query', [
                     [
                     'key' => 'department',
-                    'value' => $_GET['place-department'],
+                    'value' => htmlspecialchars($_GET['place-department']),
                     ],
                 ]);
             }
@@ -43,8 +44,9 @@ function title_filter( $where, $wp_query ) {
         $queryArgs = isset( $_POST['query'] ) ? array_map( 'esc_attr', $_POST['query'] ) : array();
         $placeName = $queryArgs['custom_s'];
     }
-    if (!empty($_GET['place-name'])) {
-        $placeName = $_GET['place-name'];
+    if (!empty($_GET['place-name']) && mb_strlen($_GET['place-name']) > 0 && mb_strlen($_GET['place-name']) <= 30) {
+        $placeName = htmlspecialchars($_GET['place-name']);
+        echo($placeName);
     }
     if (isset($placeName))  {
 
