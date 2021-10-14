@@ -22,10 +22,10 @@
         dark
       >
         <v-card-title class="text-h6">
-          Lorem Ipsum Dolor
+          {{ item.title }}
         </v-card-title>
         <v-card-text class="white text--primary">
-          <p class="p-cards">Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.</p>
+          <p class="p-cards">{{ item.content }}</p>
           <!-- <v-btn
             :color="item.color"
             class="mx-0"
@@ -52,18 +52,26 @@
         {
           color: 'red lighten-2',
           icon: 'mdi-eye',
+          title: "étape 1",
+          content: "blablabla 1",
         },
         {
           color: 'purple darken-1',
           icon: 'mdi-account-plus',
+          title: "étape 2",
+          content: "blablabla 2",
         },
         {
           color: 'green lighten-1',
           icon: 'mdi-table-large-plus',
+          title: "étape 3",
+          content: "blablabla 3",
         },
         {
           color: 'indigo',
           icon: 'mdi-creation',
+          title: "étape 4",
+          content: "blablabla 4",
         },
       ],
     }),
@@ -83,6 +91,7 @@
 .p-cards {
 
     padding-top: 1.5em !important;
+    min-width: 40vw;
   
 }
 
