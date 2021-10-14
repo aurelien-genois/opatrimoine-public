@@ -91,7 +91,7 @@
 .p-cards {
 
     padding-top: 1.5em !important;
-    min-width: 30vw;
+    min-width: 40vw;
   
 }
 
