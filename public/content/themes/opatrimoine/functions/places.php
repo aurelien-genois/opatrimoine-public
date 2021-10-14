@@ -46,7 +46,6 @@ function title_filter( $where, $wp_query ) {
     }
     if (!empty($_GET['place-name']) && mb_strlen($_GET['place-name']) > 0 && mb_strlen($_GET['place-name']) <= 30) {
         $placeName = htmlspecialchars($_GET['place-name']);
-        echo($placeName);
     }
     if (isset($placeName))  {
 
