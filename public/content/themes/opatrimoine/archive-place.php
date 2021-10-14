@@ -12,7 +12,7 @@ $departments = getDepartments();
     <form class="places-list-form">
         <div class="inputs-container">
             <fieldset>
-                <input type="text" id="place-name" name="place-name" value="<?= $_GET['place-name'] ?? '' ?>">
+                <input type="text" id="place-name" name="place-name" value="<?= $_GET['place-name'] ?? '' ?>" placeholder="Ajoutez un mot clé">
 
                 <select name="place-type" id="place-type">
                     <option value="">Tous les types de lieux</option>

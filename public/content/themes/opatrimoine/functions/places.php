@@ -8,6 +8,7 @@ function place_pre_get_posts($query) {
         $query->set('posts_per_page', 12);
 
         if(!empty($_GET)) {
+            $_GET['place-type'] = htmlspecialchars($_GET['place-type']);
             // Wordpress filters automatically because input's name is the same as taxonomy's name
             // if ($_GET['place-type'] !== "all") {
             //     $query->set('tax_query', [
@@ -19,11 +20,11 @@ function place_pre_get_posts($query) {
             //     ]);
             // }
 
-            if (!empty($_GET['place-department'])) {
+            if (!empty($_GET['place-department']) && mb_strlen($_GET['place-department']) > 0 && mb_strlen($_GET['place-department']) <= 30) {
                 $query->set('meta_query', [
                     [
                     'key' => 'department',
-                    'value' => $_GET['place-department'],
+                    'value' => htmlspecialchars($_GET['place-department']),
                     ],
                 ]);
             }
@@ -43,8 +44,8 @@ function title_filter( $where, $wp_query ) {
         $queryArgs = isset( $_POST['query'] ) ? array_map( 'esc_attr', $_POST['query'] ) : array();
         $placeName = $queryArgs['custom_s'];
     }
-    if (!empty($_GET['place-name'])) {
-        $placeName = $_GET['place-name'];
+    if (!empty($_GET['place-name']) && mb_strlen($_GET['place-name']) > 0 && mb_strlen($_GET['place-name']) <= 30) {
+        $placeName = htmlspecialchars($_GET['place-name']);
     }
     if (isset($placeName))  {
 
@@ -63,21 +64,22 @@ function getPlaceTypes() {
 }
 
 function getDepartments() {
+    // $resource = curl_init('https://geo.api.gouv.fr/departements');
+    // curl_setopt_array($resource, [
+    //     CURLOPT_RETURNTRANSFER => true,
+    // ]);
+    // $jsonString = curl_exec($resource);
+    // $departmentsArr = json_decode($jsonString);
 
-    $resource = curl_init('https://geo.api.gouv.fr/departements');
-    curl_setopt_array($resource, [
-        CURLOPT_RETURNTRANSFER => true,
-    ]);
-    $jsonString = curl_exec($resource);
-    $departmentsArr = json_decode($jsonString);
+    // // get all departments from the official API geo.api.gouv.fr
+    // $departments = [];
+    // foreach($departmentsArr as $department) {
+    //     $departments[] = $department->nom;
+    // };
+    // return $departments;
 
-    // get all departments from the official API geo.api.gouv.fr
-    $departments = [];
-    foreach($departmentsArr as $department) {
-        $departments[] = $department->nom;
-    };
-
-    return $departments;
+    // it is not need to call api each time to get a static array (without search parameters)
+    return ["Ain","Aisne","Allier","Alpes-de-Haute-Provence","Hautes-Alpes","Alpes-Maritimes","Ardèche","Ardennes","Ariège","Aube","Aude","Aveyron","Bouches-du-Rhône","Calvados","Cantal","Charente","Charente-Maritime","Cher","Corrèze","Côte-d'Or","Côtes-d'Armor","Creuse","Dordogne","Doubs","Drôme","Eure","Eure-et-Loir","Finistère","Corse-du-Sud","Haute-Corse","Gard","Haute-Garonne","Gers","Gironde","Hérault","Ille-et-Vilaine","Indre","Indre-et-Loire","Isère","Jura","Landes","Loir-et-Cher","Loire","Haute-Loire","Loire-Atlantique","Loiret","Lot","Lot-et-Garonne","Lozère","Maine-et-Loire","Manche","Marne","Haute-Marne","Mayenne","Meurthe-et-Moselle","Meuse","Morbihan","Moselle","Nièvre","Nord","Oise","Orne","Pas-de-Calais","Puy-de-Dôme","Pyrénées-Atlantiques","Hautes-Pyrénées","Pyrénées-Orientales","Bas-Rhin","Haut-Rhin","Rhône","Haute-Saône","Saône-et-Loire","Sarthe","Savoie","Haute-Savoie","Paris","Seine-Maritime","Seine-et-Marne","Yvelines","Deux-Sèvres","Somme","Tarn","Tarn-et-Garonne","Var","Vaucluse","Vendée","Vienne","Haute-Vienne","Vosges","Yonne","Territoire de Belfort","Essonne","Hauts-de-Seine","Seine-Saint-Denis","Val-de-Marne","Val-d'Oise","Guadeloupe","Martinique","Guyane","La Réunion","Mayotte"];
 }
 
 function getGuidedToursByPlaceId($placeId) {
