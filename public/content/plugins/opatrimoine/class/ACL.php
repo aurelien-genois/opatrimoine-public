@@ -69,7 +69,23 @@ class ACL
                 'read_private_guided-tours' => true,
                 'read_private_places' => true,
                 'read_private_posts' => true, 
-                
+                'upload_files' => true,
+
+                'create_users' => true,
+                'delete_users' => true,
+                'edit_users' => true,
+                'list_users' => true,
+                'promote_users' => true,
+                'remove_users' => true,
+
+                'manage_tour-thematics' => true,
+                'edit_tour-thematics' => true,
+                'delete_tour-thematics' => true,
+                'assign_tour-thematics' => true,
+                'manage_place-types' => true,
+                'edit_place-types' => true,
+                'delete_place-types' => true,
+                'assign_place-types' => true,
             ]
         ); 
     }

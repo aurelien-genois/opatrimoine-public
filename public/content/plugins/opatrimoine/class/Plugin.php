@@ -36,7 +36,7 @@ class Plugin
                 ['key' => 'telephone', 'label' => 'Téléphone', 'name' => 'telephone', 'type' => 'text'],
                 ['key' => 'urlsite', 'label' => 'URL du site', 'name' => 'urlsite', 'type' => 'url'],
                 ['key' => 'address', 'label' => 'Adresse', 'name' => 'address', 'type' => 'text'],
-                ['key' => 'department', 'label' => 'Ville', 'name' => 'department', 'type' => 'text'],
+                ['key' => 'department', 'label' => 'Département', 'name' => 'department', 'type' => 'text'],
                 // NTH noter un lieu
                 //['key' => 'rating', 'label' => 'Note', 'name' => 'rating', 'type' => 'number'],
             ],

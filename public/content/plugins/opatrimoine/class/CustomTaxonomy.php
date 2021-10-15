@@ -27,6 +27,12 @@ class CustomTaxonomy
         $options = $this->options;
         $options['label'] = $this->label;
         $options['hierarchical'] = $this->hierachical;
+        $options['capabilites'] = [
+            'manage_terms' => 'manage_' . $this->identifier,
+            'edit_terms' => 'edit_' . $this->identifier,
+            'delete_terms' => 'delete_' . $this->identifier,
+            'assign_terms' => 'assign_' . $this->identifier,
+        ];
 
         return register_taxonomy(
             $this->identifier,
